@@ -3,6 +3,7 @@
 @(require racket/match)
 @(require racket/list)
 
+@; TODO: replace with standard map
 @(define (emph-name names name)
    (match names
      ['() '()]
