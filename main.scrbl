@@ -1,11 +1,28 @@
 #lang scribble/html
 @(require scribble/html/extra)
+@(require racket/match)
+@(require racket/list)
+
+@(define (emph-name names name)
+   (match names
+     ['() '()]
+     [(cons n names)
+      (let [(first (if (equal? n name) @em{@n} n))]
+        (cons first (emph-name names name)))]))
+
+@(define (elem-join lst sep)
+   (match lst
+     ['() '()]
+     [(cons e lst)
+      (cond
+        [(empty? lst) (cons e lst)]
+        [else (cons e (cons sep (elem-join lst sep)))])]))
 
 @(define (pub title authors venue)
   @li{
     @b{@title}
     @br
-    @authors
+    @elem-join[(emph-name authors "Abel Nieto") ", "]
     @br
     @small[@span[style: "color:gray"]{@venue}]
   }
@@ -39,16 +56,18 @@
       @h3{peer-reviewed}
       @ol{
         @(pub "Blame for Null"
-              "Abel Nieto, Marianna Rapoport, Gregor Richards, Ondřej Lhoták"
+              '("Abel Nieto" "Marianna Rapoport" "Gregor Richards" "Ondřej Lhoták")
               "To appear at ECOOP 2020")
         @(pub "Scala with Explicit Nulls"
-              "Abel Nieto, Yaoyu Zhao, Ondřej Lhoták, Angela Chang, Justin Pu"
+              '("Abel Nieto" "Yaoyu Zhao" "Ondřej Lhoták" "Angela Chang" "Justin Pu")
               "To appear at ECOOP 2020")
         @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
-              "Abel Nieto"
+              '("Abel Nieto")
               "Scala Symposium 2017")
         }
       }
+      @h3{technical reports}
+      @h3{thesis}
     }
   }
  }
