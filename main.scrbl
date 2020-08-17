@@ -1,6 +1,16 @@
 #lang scribble/html
 @(require scribble/html/extra)
 
+@(define (pub title authors venue)
+  @li{
+    @b{@title}
+    @br
+    @authors
+    @br
+    @small[@span[style: "color:gray"]{@venue}]
+  }
+)
+
 @doctype{html}
 
 @html[lang: "en"]{
@@ -26,11 +36,19 @@
     @; Publications
     @section{
       @h2{Publications}
+      @h3{peer-reviewed}
       @ol{
-        @li{a}
-        @li{b}
+        @(pub "Blame for Null"
+              "Abel Nieto, Marianna Rapoport, Gregor Richards, Ondřej Lhoták"
+              "To appear at ECOOP 2020")
+        @(pub "Scala with Explicit Nulls"
+              "Abel Nieto, Yaoyu Zhao, Ondřej Lhoták, Angela Chang, Justin Pu"
+              "To appear at ECOOP 2020")
+        @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
+              "Abel Nieto"
+              "Scala Symposium 2017")
+        }
       }
     }
   }
  }
-}
