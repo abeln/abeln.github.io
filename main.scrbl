@@ -1,15 +1,12 @@
 #lang scribble/html
-@(require scribble/html/extra)
 @(require racket/match)
 @(require racket/list)
+@(require (only-in (rename-in racket/base (map list-map)) list-map))
+@(require scribble/html/extra)
 
 @; TODO: replace with standard map
 @(define (emph-name names name)
-   (match names
-     ['() '()]
-     [(cons n names)
-      (let [(first (if (equal? n name) @em{@n} n))]
-        (cons first (emph-name names name)))]))
+   (list-map (lambda (n) (if (equal? n name) @em{@n} n)) names))
 
 @(define (elem-join lst sep)
    (match lst
@@ -28,6 +25,14 @@
     @small[@span[style: "color:gray"]{@venue}]
   }
 )
+
+@(define (tr title authors urls)
+  @li{
+    @b{@title}
+    @br
+    @elem-join[(emph-name authors "Abel Nieto") ", "]
+  }
+)   
 
 @doctype{html}
 
@@ -58,16 +63,21 @@
       @ol{
         @(pub "Blame for Null"
               '("Abel Nieto" "Marianna Rapoport" "Gregor Richards" "Ondřej Lhoták")
-              "To appear at ECOOP 2020")
+              "To appear in ECOOP 2020")
         @(pub "Scala with Explicit Nulls"
               '("Abel Nieto" "Yaoyu Zhao" "Ondřej Lhoták" "Angela Chang" "Justin Pu")
-              "To appear at ECOOP 2020")
+              "To appear in ECOOP 2020")
         @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
               '("Abel Nieto")
               "Scala Symposium 2017")
         }
       }
       @h3{technical reports}
+      @ol{
+        @(tr "Tamarin: Concolic Disequivalence for MIPS"
+             '("Abel Nieto")
+             '(("https://arxiv.org/pdf/1801.02571.pdf" ".pdf")))
+      }
       @h3{thesis}
     }
   }
