@@ -10,6 +10,7 @@
  @body{
   @article{
     @h1{Abel Nieto}
+    @; Intro section 
     @section{
       @p{
          Hello! My name is Abel, and I’m a PhD student at Aarhus University, where
@@ -20,6 +21,14 @@
        @p{
          I work on @a[href: "https://iris-project.org/"]{formal verification} of distributed systems. I'm also interested in programming language design, type theory,
          program analysis, and compilers.
+      }
+    }
+    @; Publications
+    @section{
+      @h2{Publications}
+      @ol{
+        @li{a}
+        @li{b}
       }
     }
   }
