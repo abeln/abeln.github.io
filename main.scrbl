@@ -78,11 +78,11 @@
         @(pub "Blame for Null"
               '("Abel Nieto" "Marianna Rapoport" "Gregor Richards" "Ondřej Lhoták")
               "To appear in ECOOP 2020"
-              '())
+              '(("https://github.com/abeln/null-calculus" "code")))
         @(pub "Scala with Explicit Nulls"
               '("Abel Nieto" "Yaoyu Zhao" "Ondřej Lhoták" "Angela Chang" "Justin Pu")
               "To appear in ECOOP 2020"
-              '())
+              '(("https://github.com/abeln/dotty/tree/dotty-explicit-nulls-evaluation" "code")))
         @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
               '("Abel Nieto")
               "Scala Symposium 2017"
