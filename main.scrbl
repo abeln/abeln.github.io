@@ -48,9 +48,9 @@
   }
 )
 
-@(define (scribble title file)
+@(define (scribble title file date)
    @li{
-       @a[href: @(string-append "scribbles/" @file ".html")]{@title}
+       @a[href: @(string-append "scribbles/" @file ".html")]{@title} @small[@span[style: "color:gray"]{(@date)}]
    }
  )
 
@@ -119,7 +119,7 @@
     @section{
       @h2{Scribbles}
       @ul{
-        @(scribble "a free theorem" "free-theorem")
+        @(scribble "a free theorem" "free-theorem" "08/25/20")
       }
     }
   }
