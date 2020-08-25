@@ -13,6 +13,9 @@
  }
  @body{
   @article{
+    @p{The following @a[href: "https://en.wikipedia.org/wiki/Parametricity"]{free theorem} appears as an exercise in Lau Skorstengaard's
+      @a[href: "https://arxiv.org/pdf/1907.11133.pdf"]{"An Introduction to Logical Relations"}.
+    }
     @p{
        @b{Theorem.} If \(\cdot; \cdot \vdash e : \forall \alpha. ((\tau \rightarrow \alpha) \rightarrow \alpha)\) and
        \( \cdot; \cdot \vdash k : \tau \rightarrow \tau_k \), then \( \cdot; \cdot \vdash e[\tau_k] k \approx k (e[\tau] \lambda x: \tau.x) : \tau_k \).
@@ -25,7 +28,7 @@
        \( (\Lambda \alpha. e', \Lambda \alpha. e') \in V[\forall \alpha. ((\tau \rightarrow \alpha) \rightarrow \alpha)]_\emptyset \).
        @br{}
        We pick \(\sigma = [\alpha \mapsto (\tau_k, \tau, R])\), where \(R\) is defined as
-       \[ R = \{ (v_k, v_\tau) | \forall v_w. (v_w, v_\tau) \in V[\tau]_\emptyset \implies (v_k, k v_w) \in E[\tau_k]_\emptyset \} \]
+       \[ R = \{ (v_k, v_\tau) | (v_k, k v_\tau) \in E[\tau_k]_\emptyset \} \]
        We get \( (e'[\tau_k / \alpha], e'[\tau / \alpha]) \in E[(\tau \rightarrow \alpha) \rightarrow \alpha]_\sigma \), from where we obtain values \((v_k, v_\tau) \in
        V[(\tau \rightarrow \alpha) \rightarrow \alpha]_\sigma \)
        such that
@@ -72,7 +75,15 @@
       @br
       @b{Lemma.} \( (k, \lambda x : \tau. x) \in E[\tau \rightarrow \alpha]_\sigma \).
       @br
-      @b{Proof.}
+      @b{Proof.} Pick any \( (v_1, v_2) \in V[\tau]_{\sigma} \). Since \( \alpha \not \in FVs(\tau) \), then \( V[\tau]_{\sigma} = V[\tau]_\emptyset \).
+      Similarly, \( V[\tau_k]_\sigma = V[\tau_k]_\emptyset. \)
+      Then \( (v_1, v_2) \in V[\tau]_\emptyset \). We need to show that
+      \[ (k v_1, (\lambda x: \tau). x) v_2 \in E[\alpha]_\sigma \]
+      Since \( k v_1 \) reduces to some \( v_f \) (because both \( k \) and \( v_1 \) are well-typed), then we have to show
+      \[ (v_f, v_2) \in V[\alpha]_\sigma = R \]
+      To show that \( (v_f, v_2) \in R \) we need
+      \[ (v_f, k v_2) \in E[\tau_k]_\emptyset \]
+      Because \( k v_1 \rightarrow^* v_f \), it suffices to show \( (k v_1, k v_2) \in E[\tau_k]_\emptyset \). This follows from the fundamental theorem, because \( k \) is well-typed. \( \blacksquare \)
     }
   }
  }
