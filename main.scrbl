@@ -104,7 +104,7 @@
       @h3{thesis}
       @ol{
         @(thesis "Scala with Explicit Nulls"
-                  "MMath, University of Waterloo, 2019"
+                  "master thesis, University of Waterloo, 2019"
                  '(("https://uwspace.uwaterloo.ca/handle/10012/15364" ".pdf")))
       }
     }
