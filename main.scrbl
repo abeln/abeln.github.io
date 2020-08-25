@@ -48,11 +48,19 @@
   }
 )
 
+@(define (scribble title file)
+   @li{
+       @a[href: @(string-append "scribbles/" @file ".html")]{@title}
+   }
+ )
+
 @doctype{html}
 
 @html[lang: "en"]{
  @head{
   @link[rel: "stylesheet" href: "tufte.css"]
+  @script[src: "https://polyfill.io/v3/polyfill.min.js?features=es6"]
+  @script[id: "MathJax-script" async:"" src:"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"]
  }
  @body{
   @article{
@@ -68,7 +76,7 @@
        @p{
          I work on @a[href: "https://iris-project.org/"]{formal verification} of distributed systems. I'm also interested in programming language design, type theory,
          program analysis, and compilers.
-      }
+       }
     }
     @; Publications
     @section{
@@ -89,7 +97,6 @@
               '(("https://cs.uwaterloo.ca/~anietoro/algo-dot.pdf" ".pdf")
                 ("https://www.youtube.com/watch?v=uokvc1Do_nM" "talk")))
         }
-      }
       @h3{technical reports}
       @ol{
         @(tr "Tamarin: Concolic Disequivalence for MIPS"
@@ -108,5 +115,13 @@
                  '(("https://uwspace.uwaterloo.ca/handle/10012/15364" ".pdf")))
       }
     }
+    @; Scribbles
+    @section{
+      @h2{Scribbles}
+      @ul{
+        @(scribble "a free theorem" "free-theorem")
+      }
+    }
   }
  }
+}
