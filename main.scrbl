@@ -18,7 +18,7 @@
 @(define (show-urls urls)
    (cond
      [(empty? urls) @span{}]
-     [else @span{|@elem-join[@(list-map (lambda (p) (@a[style: "color:blue" href: (first p)]{@(second p)})) urls) ", "]}]))
+     [else @span{|@elem-join[@(list-map (lambda (p) (@a[href: (first p)]{@(second p)})) urls) ", "]}]))
 
 @(define (pub title authors venue urls)
   @li{
