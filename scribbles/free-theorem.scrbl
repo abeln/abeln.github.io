@@ -14,7 +14,7 @@
  @body{
   @article{
     @p{The following @a[href: "https://en.wikipedia.org/wiki/Parametricity"]{free theorem} appears as an exercise in Lau Skorstengaard's
-      @a[href: "https://arxiv.org/pdf/1907.11133.pdf"]{"An Introduction to Logical Relations"}.
+      @a[href: "https://arxiv.org/pdf/1907.11133.pdf"]{@i{An Introduction to Logical Relations}}.
     }
     @p{
        @b{Theorem.} If \(\cdot; \cdot \vdash e : \forall \alpha. ((\tau \rightarrow \alpha) \rightarrow \alpha)\) and
