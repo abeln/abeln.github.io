@@ -83,23 +83,23 @@
       @h2{Publications}
       @h3{peer-reviewed}
       @ol{
-        @(pub "Distributed Causal Memory: Modular Specification andVerification in Higher-Order Distributed Separation Logic"
+        @(pub "Distributed Causal Memory: Modular Specification and Verification in Higher-Order Distributed Separation Logic"
               '("Léon Gondelman" "Simon Oddershede Gregersen" "Abel Nieto" "Amin Timany" "Lars Birkedal")
-              "Conditionally Accepted to POPL 2021"
-              '(("papers/2021-ccddb.pdf" ".pdf")))
+              "POPL 2021"
+              '(("papers/ccdb-final.pdf" ".pdf")))
         @(pub "Blame for Null"
               '("Abel Nieto" "Marianna Rapoport" "Gregor Richards" "Ondřej Lhoták")
-              "To appear in ECOOP 2020"
-              '(("papers/blame-for-null.pdf" ".pdf")
+              "ECOOP 2020"
+              '(("papers/blame-final.pdf" ".pdf")
                 ("https://github.com/abeln/null-calculus" "code")))
         @(pub "Scala with Explicit Nulls"
               '("Abel Nieto" "Yaoyu Zhao" "Ondřej Lhoták" "Angela Chang" "Justin Pu")
-              "To appear in ECOOP 2020"
-              '(("papers/scala-explicit-nulls.pdf" ".pdf")
+              "ECOOP 2020"
+              '(("papers/explicit-nulls-final.pdf" ".pdf")
                 ("https://github.com/abeln/dotty/tree/dotty-explicit-nulls-evaluation" "code")))
         @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
               '("Abel Nieto")
-              "Scala Symposium 2017"
+              "Scala 2017"
               '(("papers/algo-dot.pdf" ".pdf")
                 ("https://www.youtube.com/watch?v=uokvc1Do_nM" "talk")))
         }
