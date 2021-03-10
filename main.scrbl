@@ -126,6 +126,7 @@
       @h2{Scribbles}
       @ul{
         @(scribble "a free theorem" "free-theorem" "08/25/20")
+        @(scribble "commuting quantifiers: an example" "quantifiers" "03/10/21")
       }
     }
   }
