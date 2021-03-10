@@ -1,21 +1,26 @@
 <html lang="en"><head><link rel="stylesheet" href="../tufte.css" />
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
-<body><article><p>The following note defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
-on the LTS, similarity can be iteratively computed. None of what follows is novel, and is sourced from Davide Sangiorgi's excellent
+<body><article> <section><p><span class="newthought">This note</span> defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
+on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the trick for &quot;commuting quantifiers&quot; described in
+<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. None of what follows is novel, and is sourced from Davide Sangiorgi's excellent
 <a href="https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60">introduction to coinduction and
-bisimulation</a>.</p>
-<p>An LTS is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
+bisimulation</a>.</p></section>
+ <section><p><span class="newthought">A labelled-transition system</span> is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
 <i>actions</i> (labels), and \( \rightarrow \subseteq Pr \times Act \times Pr \) is the <i>transition relation</i>. We will write
 \( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \).</p>
-<p>A <i>simulation</i> is a relation \( R \subseteq Pr \times Pr \) such that if \( (P, Q) \in R \), then</p>
-<ul><li> for all \( P' \) such that \( P \rightarrow_{\mu} P'  \), there exists a \( Q' \) such that
-\( Q \rightarrow_{\mu} Q' \) and \( (P', Q') \in R \).</li></ul>
-<p><i>Similarity</i>, denoted by \( \le \), is the union of all simulations; additionally, it too is a simulation.
-When \( P \le Q \) we say that \( Q \) <i>simulates</i> \( P \) (note the order is reversed).</p>
-<p>For example, the following LTS models a <a href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol">two-phase commit</a> protocol with two clients,
-while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action (e.g. \( \mu \)):</p>.
+<p>A <i>simulation</i> is a relation \( R \subseteq Pr \times Pr \) such that if \( (P, Q) \in R \), then for all \( P' \) such that \( P \rightarrow_{\mu} P'  \), there exists a \( Q' \) such that
+\( Q \rightarrow_{\mu} Q' \) and \( (P', Q') \in R \).</p>
+<p><i>Similarity</i>, denoted by \( \le \), is the union of all simulations.
+ When \( P \le Q \) we say that \( Q \) <i>simulates</i> \( P \) (note the order is reversed).
+For example, the following LTS models a <a href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol">two-phase commit</a> protocol with two clients,
+while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action (e.g. \( \mu \)):</p>
 <img src="2pc.png" style="height:300px" />
-<p>If we want to model the protocol at a higher level, we can decide not to keep track of the state of the clients:</p>
+<p>If we want to model the protocol at a higher level, we can decide to not keep track of the client state:</p>
 <img src="2pc-simple.png" style="height:200px" />
-<p>We then need a way to relate the two models: we can use similarity to that effect. We can see that \( Init \le Init' \), all the C and A states are simulated by Procc, \( Commit \le Commit' \), and \( Abort \le Abort' \).</p></article></body></html>
+<p>We then need a way to relate the two models: we can use similarity to that effect. We can see that \( Init \le Init' \), all the C and A states are simulated by Procc, \( Commit \le Commit' \), and \( Abort \le Abort' \).
+For example, the sequence \( [Init, C_1, A_2, Abort] \) is simulated by \( [Init', Procc, Procc, Abort'] \).</p></section>
+<section><p><span class="newthought">Working on the complete</span> <i>powerset lattice</i> \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest <i>fixpoint</i> of a <i>functional</i>
+\( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
+\[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
+<b>Fact: </b> \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).</p></section></article></body></html>
