@@ -22,5 +22,18 @@ while keeping track of which clients have committed (C) or aborted (A). The tran
 For example, the sequence \( [Init, C_1, A_2, Abort] \) is simulated by \( [Init', Procc, Procc, Abort'] \).</p></section>
 <section><p><span class="newthought">Working on the complete</span> <i>powerset lattice</i> \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest <i>fixpoint</i> of a <i>functional</i>
 \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
+<label for="sn-demo" class="margin-toggle sidenote-number"></label>
+<input type="checkbox" id="sn-demo" class="margin-toggle" />
+<span class="sidenote">The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) <i>for one step</i> and after that one step <i>we end up in a pair of states in \( R \). </i> </span>
 \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
-<b>Fact: </b> \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).</p></section></article></body></html>
+<b>Fact 1. </b> \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
+<br />
+<b>Corollary 2. </b> similarity is  F's greatest fixpoint (follows by <a href="https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem">Knaster-Tarski</a>).</p>
+<p>Moreover, we can stratify similarity through a family of relations \( \{ \le_n \} \) capturing <i>similarity up to \(n\) steps</i>:
+<ul><li>\( \le_0 = Pr \times Pr \)</li>
+<li> \( \le_{n + 1} = F(\le_n) \)</li></ul></p>
+<p>To compute similarity, we'd like to know that \( P \le Q \) iff  \( P \le_n Q \) <i>for all n</i>; i.e.
+  $$ \le = \bigcap_{i \ge 0} \le_i $$
+If so, we could compute \( \le_0, \le_1, \ldots, \le_n, \ldots \)
+Since \( F \) is monotone, if at any point we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \), then we know that
+$$  \bigcap_{i \ge 0} \le_i = \le_n $$</p></section></article></body></html>

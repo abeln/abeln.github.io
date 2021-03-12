@@ -45,8 +45,27 @@
    @p{
    @span[class: "newthought"]{Working on the complete} @i{powerset lattice} \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest @i{fixpoint} of a @i{functional}
    \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
+   @label[for: "sn-demo" class:"margin-toggle sidenote-number"]
+   @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
+   @span[class: "sidenote"]{The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
    \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
-   @b{Fact: } \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
+   @b{Fact 1. } \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
+   @br{}
+   @b{Corollary 2. } similarity is  F's greatest fixpoint (follows by @a[href: "https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem"]{Knaster-Tarski}).
+   }
+   @p{
+   Moreover, we can stratify similarity through a family of relations \( \{ \le_n \} \) capturing @i{similarity up to \(n\) steps}:                                                                 
+   @ul{
+       @li{\( \le_0 = Pr \times Pr \)}
+       @li{ \( \le_{n + 1} = F(\le_n) \)}
+    }
+   }
+   @p{
+   To compute similarity, we'd like to know that \( P \le Q \) iff  \( P \le_n Q \) @i{for all n}; i.e.
+     $$ \le = \bigcap_{i \ge 0} \le_i $$
+   If so, we could compute \( \le_0, \le_1, \ldots, \le_n, \ldots \)
+   Since \( F \) is monotone, if at any point we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \), then we know that
+   $$  \bigcap_{i \ge 0} \le_i = \le_n $$
    }}
   }
  }
