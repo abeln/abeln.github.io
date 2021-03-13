@@ -9,14 +9,14 @@
   @link[rel: "stylesheet" href: "../tufte.css"]
   @script[src: "https://polyfill.io/v3/polyfill.min.js?features=es6"]
   @script[id: "MathJax-script" async:"" src:"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"]
-  @link[rel:"stylesheet" href:"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css"]
-  @script[src: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"]
+  @link[rel:"stylesheet" href:"../highlight/styles/a11y-light.css"]
+  @script[src: "../highlight/highlight.pack.js"]
   @script{hljs.highlightAll();}
  }
  @body{
   @article{
 
-   @pre{[
+   @pre{
     @code[class: "scala"]{
      // Compute similarity between two labelled-transition systems using
      // iteration until fixpoint.

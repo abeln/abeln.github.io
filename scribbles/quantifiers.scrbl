@@ -65,7 +65,7 @@
      If so, we could compute \( \le_0, \le_1, \ldots, \le_n, \ldots \)
      Since \( F \) is monotone, then we can stop computing as soon as we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \). In that case
      $$  \le = \bigcap_{i \ge 0} \le_i = \le_n $$
-     The iteration-until-fixpoint algorithm can be implemented more or less verbatim (@a[href: "simil-src.html"]{Scala source}).
+     The fixpoint algorithm can be implemented more or less verbatim (@a[href: "simil-src.html"]{Scala source}).
      For the 2PC models above, we indeed get that \( Init \le Init' \) as expected.
      @label[for: "sn-sim" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-sim" class: "margin-toggle"]
