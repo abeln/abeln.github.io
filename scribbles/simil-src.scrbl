@@ -36,10 +36,10 @@
         s1 <- L1.procc
         s2 <- L2.procc
         if L1.trans.getOrElse(s1, List()).forall(
-        { case (a1, p1) =>
-         L2.trans.getOrElse(s2, List()).exists(
-         { case (a2, p2) => a2 == a1 && R.contains(p1, p2)  })
-         })
+          { case (a1, p1) =>
+            L2.trans.getOrElse(s2, List()).exists(
+              { case (a2, p2) => a2 == a1 && R.contains(p1, p2)  })
+          })
         } yield (s1, s2)
       }
 

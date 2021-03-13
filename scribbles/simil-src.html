@@ -23,10 +23,10 @@ object Main {
    s1 &lt;- L1.procc
    s2 &lt;- L2.procc
    if L1.trans.getOrElse(s1, List()).forall(
-   { case (a1, p1) =&gt;
-    L2.trans.getOrElse(s2, List()).exists(
-    { case (a2, p2) =&gt; a2 == a1 &amp;&amp; R.contains(p1, p2)  })
-    })
+     { case (a1, p1) =&gt;
+       L2.trans.getOrElse(s2, List()).exists(
+         { case (a2, p2) =&gt; a2 == a1 &amp;&amp; R.contains(p1, p2)  })
+     })
    } yield (s1, s2)
  }
 
