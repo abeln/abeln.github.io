@@ -48,9 +48,13 @@
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
      @span[class: "sidenote"]{The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
      \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
+     @hr{}
+     @p{
      @b{Fact 1. } \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
      @br{}
      @b{Corollary 2. } similarity is  F's greatest fixpoint (follows by @a[href: "https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem"]{Knaster-Tarski}).
+     }
+     @hr{}
     }
     @p{
      Moreover, we can stratify similarity through a family of relations \( \{ \le_n \} \) capturing @i{similarity up to \(n\) steps}:                                                                 
@@ -93,6 +97,11 @@
      Init ≤ Procc }
      }
     }
+    @p{Unfortunately the method above doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
+     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, \( A \) @i{cannot} simulate \( C \) because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
+     one of the \( B_i \), and from then on it can only take a finite number of steps. }
+    @img[src: "sim-inf.png" style:"height:200px" float:"left"]
+    @img[src: "sim-n.png" style:"height:200px"]
    }
   }
  }
