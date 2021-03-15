@@ -3,6 +3,28 @@
 @(require racket/list)
 @(require (only-in (rename-in racket/base (map list-map)) list-map))
 @(require scribble/html/extra)
+
+@(define math-ctr 1)
+
+@(define (get-math-ctr-and-incr)
+   (define c math-ctr)
+   (set! math-ctr (+ 1 math-ctr))
+   c)
+
+@(define (mathdef s)
+   @u[@b[(format "~a ~a." s (get-math-ctr-and-incr))]])
+
+@(define (theorem)
+   (mathdef "Theorem"))
+
+@(define (lemma)
+   (mathdef "Lemma"))
+
+@(define (fact)
+   (mathdef "Fact"))
+
+@(define (corollary)
+   (mathdef "Corollary"))
    
 @html[lang: "en"]{
  @head{
@@ -48,13 +70,11 @@
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
      @span[class: "sidenote"]{The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
      \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
-     @hr{}
      @p{
-     @b{Fact 1. } \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
+     @fact{} \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
      @br{}
-     @b{Corollary 2. } similarity is  F's greatest fixpoint (follows by @a[href: "https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem"]{Knaster-Tarski}).
+     @corollary{} similarity is  F's greatest fixpoint (follows by @a[href: "https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem"]{Knaster-Tarski}).
      }
-     @hr{}
     }
     @p{
      Moreover, we can stratify similarity through a family of relations \( \{ \le_n \} \) capturing @i{similarity up to \(n\) steps}:                                                                 
@@ -103,6 +123,7 @@
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
     @img[src: "sim-n.png" style:"height:200px"]
    }
+   @p{}
   }
  }
 }
