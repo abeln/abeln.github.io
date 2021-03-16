@@ -25,6 +25,10 @@
 
 @(define (corollary)
    (mathdef "Corollary"))
+
+@(define (definition)
+   (mathdef "Definition"))
+
    
 @html[lang: "en"]{
  @head{
@@ -122,8 +126,42 @@
      one of the \( B_i \), and from then on it can only take a finite number of steps. }
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
     @img[src: "sim-n.png" style:"height:200px"]
+    @p{
+    To see what the problem is, it helps to try to carry out the proof that \( \le = \bigcap_{i \ge 0} \le_i \) and see where it breaks.
+    For this, we need to show that \( \le \subseteq \bigcap_{i \ge 0}  \) and \( \bigcap_{i \ge 0} \subseteq \le \). The first goal goes through without problems.
+    Notice that
+    $$ \begin{align}
+     \le & \subseteq Pr \times Pr &= \le_0 \\
+     \le = F(\le) & \subseteq F(\le_0) &= \le_1 \\
+     \le = F(\le) & \subseteq F(\le_1) &= \le_2 \\
+     \ldots & &
+    \end{align} $$
+    Using the fact that \( \le \) is a fixpoint and \( F \) is monotone we can proceed by induction to show that \( \le \subseteq \le_n \) for all \( n \), and
+    the result follows.
+    }
+    @p{
+    It's the second goal that gives us trouble. We need to show that \( \bigcap_{i \ge 0} \le_i \subseteq \le \). Since similarity is the largest simulation,
+    it's enough to show that  \( \bigcap_{i \ge 0} \le_i \) is a simulation. That is, given that \( (P, Q) \in \bigcap_{i \ge 0} \le_i \) and assuming that \( P \rightarrow_\mu P' \), we
+    have to show that there exists a Q' such that \( Q \rightarrow_\mu Q\ \) and \( (Q, Q') \in \bigcap_{i \ge 0} \le_i \). Because  \( (P, Q) \in \bigcap_{i \ge 0} \le_i \) we know that @i{for each \(i\)}
+    we can find a \( Q'_i \) such that \( Q \rightarrow_\mu Q'_i \) and \( (P', Q'_i ) \in \le_i \). That is, we know
+    $$ \forall i, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    But we need
+    $$ \exists Q', \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    Of course, we know we can't simply swap the quantifiers, which is consistent with the counterexample we saw above.
+    In the counterexample, process \( A \) had infinitely-many outgoing transitions, so one (not very intuitive) question to ask is whether restricting the LTS to being @i{finitely branching} solves the problem.
+    }
+    @p{
+    @definition{} An LTS is finitely-branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.
+    We now finally get to the meat of the matter: if the LTS is finitely branching, then we can exchange the quantifiers.
+    }
+    @p{
+    @lemma{} If the underlying LTS is finitely-branching, then
+    $$ \forall i, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    implies
+    $$ \exists Q', \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    @b{@u{Proof.}}
+    }
    }
-   @p{}
   }
  }
 }
