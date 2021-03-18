@@ -87,10 +87,25 @@ But we need
 $$ \exists Q', \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
 Of course, we know we can't simply swap the quantifiers, which is consistent with the counterexample we saw above.
 In the counterexample, process \( A \) had infinitely-many outgoing transitions, so one (not very intuitive) question to ask is whether restricting the LTS to being <i>finitely branching</i> solves the problem.</p>
-<p><u><b>Definition 3.</b></u> An LTS is finitely-branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.
-We now finally get to the meat of the matter: if the LTS is finitely branching, then we can exchange the quantifiers.</p>
+<p><u><b>Definition 3.</b></u> An LTS is finitely-branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.</p>
+<p>We now finally get to the meat of the matter: if the LTS is finitely branching, then we can exchange the quantifiers.</p>
 <p><u><b>Lemma 4.</b></u> If the underlying LTS is finitely-branching, then
-$$ \forall i, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+$$ \forall i \ge 0, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
 implies
-$$ \exists Q', \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
-<b><u>Proof.</u></b></p></section></article></body></html>
+$$ \exists Q', \forall i \ge 0, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+<b><u>Proof.</u></b>
+Let \( M = \{ Q\ | Q \rightarrow_\mu Q' \in \rightarrow \} \). Since the LTS is finitely-branching, then \( M \) is finite.
+From the assumption, we can construct a function \( f(i) = Q_i \) that assigns to every index \( i \) and element \( Q_i \in M \).
+Now define the <i>fiber</i> \( f^{-1}(e) \) of an element \( e \) to be the inverse image of the singleton set containing \( e \):
+$$ f^{-1}(Q') = \{ i | f(i) = Q' \} $$
+Notice that the set of natural numbers can be partitioned as the union of the fibers of elements of \( M \):
+$$ \mathbb{N} = \bigcup_{Q' \in M} f^{-1}(Q') $$
+Now look at the cardinalities on each side of the equation above. \( \mathbb{N} \) is infinite, and there are finitely many \( Q' \in M \).
+This means that at least one of the elements has an <i>infinite</i> fiber. Let \( Q' \) be one such element.
+Now consider an arbitrary index \( i \). Since \( f^{-1}(Q') \) is infinite, there exists a \( j &gt; i \) such that \( j \in f^{-1}(Q') \),
+meaning that \( f(j) = Q' \).
+In turn, this means that
+$$ Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+Since \( i \) was arbitrarily chosen, we get
+$$ \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+which is allows us to instantiate the existential in our goal. \( \blacksquare \)</p></section></article></body></html>
