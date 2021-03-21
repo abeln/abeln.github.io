@@ -61,7 +61,7 @@
     @p{@i{Similarity}, denoted by \( \le \), is the union of all simulations.
      When \( P \le Q \) we say that \( Q \) @i{simulates} \( P \) (note the order is reversed). 
      For example, the following LTS models a @a[href:"https://en.wikipedia.org/wiki/Two-phase_commit_protocol"]{two-phase commit} (2PC) protocol with two clients,
-     while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action (e.g. \( \mu \)):}
+     while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action:}
     @img[src: "2pc.png" style:"height:300px"]
     @p{If we want to model the protocol at a higher level, we can decide to not keep track of the client state:}
     @img[src: "2pc-simple.png" style:"height:200px"]
