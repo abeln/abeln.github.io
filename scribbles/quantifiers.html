@@ -1,9 +1,11 @@
 <html lang="en"><head><link rel="stylesheet" href="../tufte.css" />
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
-<body><article><section><p><span class="newthought">This note</span> defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
+<body><article><h1>Simulations and Commuting Quantifiers</h1>
+<h3>March, 2021</h3>
+<section><p><span class="newthought">This note</span> defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
 on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the &quot;trick&quot; for commuting quantifiers described in
-<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. The content sourced from Davide Sangiorgi's excellent
+<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. The presentation is based on Davide Sangiorgi's excellent
 <a href="https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60">introduction to coinduction and
 bisimulation</a>.</p></section>
 <section><p><span class="newthought">A labelled-transition system</span> is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
