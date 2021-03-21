@@ -61,6 +61,7 @@ class Simil(L1: LTS, L2: LTS) {
 
   // Compute the fixpoint of a function f from the sequence
   // [R, f(R), f(f(R)), ...]
+  @"@"tailrec
   private def fixpoint(R : Rel, f : Rel => Rel): Rel = {
     val next = f(R)
     if (next == R) R else fixpoint(next, f)
