@@ -151,18 +151,18 @@
     In the counterexample, process \( A \) had infinitely-many outgoing transitions, so one (not very intuitive) question to ask is whether restricting the LTS to being @i{finitely branching} solves the problem (it does).
     }
     @p{
-    @definition{} An LTS is finitely-branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.
+    @definition{} An LTS is finitely branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.
     }
     @p{
     We now finally get to the meat of the matter: if the LTS is finitely branching, then we can exchange the quantifiers.
     }
     @p{
-    @lemma{} If the underlying LTS is finitely-branching, then
+    @lemma{} If the underlying LTS is finitely branching, then
     $$ \forall i. \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     implies
     $$ \exists Q'. \forall i. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     @b{@u{Proof.}}
-    Let \( M = \{ Q\ | Q \rightarrow_\mu Q' \in \rightarrow \} \). Since the LTS is finitely-branching, then \( M \) is finite.
+    Let \( M = \{ Q\ | Q \rightarrow_\mu Q' \in \rightarrow \} \). Since the LTS is finitely branching, then \( M \) is finite.
     From the assumption, we can construct a function \( f(i) = Q_i \) that assigns to every index \( i \) and element \( Q_i \in M \).
     Now define the @i{fiber} \( f^{-1}(e) \) of an element \( e \) to be the inverse image of the singleton set containing \( e \):
     $$ f^{-1}(Q') = \{ i | f(i) = Q' \} $$
@@ -201,11 +201,25 @@
      $$
     }
     @p{
-       In order to use Theorem 1, we need
-       @ul{
-           @li{ \( \mathbb{N} \) must be a regular ordinal. }
-           @li{ \( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \). }
-           @li{ \( \mathcal{L}(i, Q') \) is @i{downwards-closed} on its first component with respect to the usual ordering on natural numbers. }
+     In order to use Theorem 1, we need
+     @ul{
+      @li{ @i{\( \mathbb{N} \) must be a @a[href: "https://en.wikipedia.org/wiki/Regular_cardinal"]{regular ordinal}}. For our purposes, this means the following: suppose we have an @i{unbounded} subset \( S \) of \( \mathbb{N} \)
+           (i.e. for any natural number \( n \) no matter how large, we can always find an element \( e \in S \) such that \( e > n \)). Then we need to show
+           there exists an @i{injective} function \( f : \mathbb{N} \rightarrow S \).
+           We can recursively construct one such function. We will set \( f(0) \) to an arbitrary element of \( S \). For the recursive case,
+           we are given \( f(n - 1) \) and have to define \( f(n) \). Since \( S \) is unbounded, there's an element \( e \in S \) such that \( e > f(n - 1) \). We set \( f(n) = e \).
+           It's easy to see that if \( n < m \) then \( f(n) < f(m) \); this means \( f \) is injective as needed. \( \blacksquare \)
+      }
+      @li{ @i{\( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \)}. This is easy, because since the LTS is finitely branching \( succ(Q, \mu) \) must be finite, and \( \mathbb{N} \) is infinite.  \( \blacksquare \)}
+      @li{ @i{\( \mathcal{L}(i, Q') \) is @i{downwards-closed}
+       @label[for: "sn-closed" class:"margin-toggle sidenote-number"]
+       @input[type:"checkbox" id:"sn-closed" class: "margin-toggle"]
+       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{L}(n, Q') \implies \mathcal{L}(m, Q') \) }
+       }. Here we need to show that if \( n \ge m \) then
+      $$ P' \le_n Q' \implies P' \le_m Q' $$
+      That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
+      This makes intuitive sense, and follows from the fact that functional \( F \) used to generate \( \le_n \) is monotone. \( \blacksquare \)
+      }
      }
     }
    }
