@@ -5,70 +5,98 @@
 <script src="../highlight/highlight.pack.js"></script>
 <script>hljs.highlightAll();</script></head>
 <body><article>
-<pre><code class="scala">// Compute similarity between two labelled-transition systems using
-// iteration until fixpoint.
-object Main {
+<pre><code class="scala">import scala.annotation.tailrec
 
- type Procc = String
- type Act = Int
+// Compute the similarity relation on nodes of a
+// labelled-transition system (LTS) via fixpoints.
 
- case class LTS(
- procc: Set[Procc],
- trans: Map[Procc, List[(Act, Procc)]])
+object Trans {
+  // LTS processes and actions
+  type Procc = String
+  type Act = Int
 
- type Rel = Set[(Procc, Procc)]
+  // A labelled-transition system is a set of processes (nodes)
+  // and transitions between them.
+  case class LTS(
+    procc: Set[Procc],
+    trans: Map[Procc, List[(Act, Procc)]])
 
- def F(L1 : LTS, L2 : LTS, R: Rel): Rel = {
-  for {
-   s1 &lt;- L1.procc
-   s2 &lt;- L2.procc
-   if L1.trans.getOrElse(s1, List()).forall(
-     { case (a1, p1) =&gt;
-       L2.trans.getOrElse(s2, List()).exists(
-         { case (a2, p2) =&gt; a2 == a1 &amp;&amp; R.contains(p1, p2)  })
-     })
-   } yield (s1, s2)
- }
+  // A relation is a set of pairs of processes.
+  type Rel = Set[(Procc, Procc)]
+}
 
- def simil(L1: LTS, L2: LTS): Rel = {
-  var res: Rel = for {
-   p1 &lt;- L1.procc
-   p2 &lt;- L2.procc
-   } yield (p1, p2)
-  var done = false
-  while (!done) {
-   val next = F(L1, L2, res)
-   if (next == res) done = true
-   else res = next
+import Trans._
+
+class Simil(L1: LTS, L2: LTS) {
+  // The _functional_ computes the pairs (p, q) where
+  // q simulates p for one step and we end up in elements
+  // in R.
+  def funct(R : Rel): Rel = {
+    for {
+      s1 &lt;- L1.procc
+      s2 &lt;- L2.procc
+      if L1.trans.getOrElse(s1, List()).forall(
+        { case (a1, p1) =&gt;
+          // s1 -&gt;_a1 p1
+          L2.trans.getOrElse(s2, List()).exists(
+            { case (a2, p2) =&gt;
+              // s2 -&gt;_a2 p2
+              a2 == a1 &amp;&amp; R.contains(p1, p2)  })
+        })
+    } yield (s1, s2)
   }
-  res
- }
 
- val action = 0                 // unique action
- def to(P: Procc) = (action, P)
+  // Compute the fixpoint of a function f from the sequence
+  // [R, f(R), f(f(R)), ...]
+  private def fixpoint(R : Rel, f : Rel =&gt; Rel): Rel = {
+    val next = f(R)
+    if (next == R) R else fixpoint(next, f)
+  }
 
- val twoPC = LTS(
- Set(&quot;Init&quot;, &quot;C1&quot;, &quot;C2&quot;, &quot;C12&quot;, &quot;A1&quot;, &quot;A2&quot;, &quot;Commit&quot;, &quot;Abort&quot;),
- Map(&quot;Init&quot; -&gt; List(to(&quot;C1&quot;), to(&quot;C2&quot;), to(&quot;A1&quot;), to(&quot;A2&quot;)),
-     &quot;C1&quot; -&gt; List(to(&quot;C12&quot;), to(&quot;A2&quot;)),
-     &quot;C2&quot; -&gt; List(to(&quot;C12&quot;), to(&quot;A1&quot;)),
-     &quot;C12&quot; -&gt; List(to(&quot;Commit&quot;)),
-     &quot;A1&quot; -&gt; List(to(&quot;Abort&quot;)),
-     &quot;A2&quot; -&gt; List(to(&quot;Abort&quot;))
-   )
- )
+  // Compute the similarity relation between processes in
+  // two LTSs (i.e. which processes in the second LTS simulate
+  // the ones in the first).
+  val simil: Rel = {
+    // Initially, consider all pairs of processes.
+    var R0: Rel = for {
+      p1 &lt;- L1.procc
+      p2 &lt;- L2.procc
+    } yield (p1, p2)
+    // Now iterate until we reach a fixpoint.
+    fixpoint(R0, funct)
+  }
+}
 
- val twoPCSimpl = LTS(
- Set(&quot;InitP&quot;, &quot;Procc&quot;, &quot;CommitP&quot;, &quot;AbortP&quot;),
- Map(&quot;InitP&quot; -&gt; List(to(&quot;Procc&quot;)),
-     &quot;Procc&quot; -&gt; List(to(&quot;Procc&quot;), to(&quot;CommitP&quot;), to(&quot;AbortP&quot;))
-   )
- )
+object Main {
+  // We have only one action.
+  val action = 0
+  def to(P: Procc) = (action, P)
 
- def main(args: Array[String]): Unit = {
-  for ((p1, p2) &lt;- simil(twoPC, twoPCSimpl).toList.sorted)
-  println(s&quot;$p1 ≤ $p2&quot;)
- }
+  // &quot;Detailed&quot; specification of two-phase commit.
+  val twoPC = LTS(
+    Set(&quot;Init&quot;, &quot;C1&quot;, &quot;C2&quot;, &quot;C12&quot;, &quot;A1&quot;, &quot;A2&quot;, &quot;Commit&quot;, &quot;Abort&quot;),
+    Map(&quot;Init&quot; -&gt; List(to(&quot;C1&quot;), to(&quot;C2&quot;), to(&quot;A1&quot;), to(&quot;A2&quot;)),
+        &quot;C1&quot; -&gt; List(to(&quot;C12&quot;), to(&quot;A2&quot;)),
+        &quot;C2&quot; -&gt; List(to(&quot;C12&quot;), to(&quot;A1&quot;)),
+        &quot;C12&quot; -&gt; List(to(&quot;Commit&quot;)),
+        &quot;A1&quot; -&gt; List(to(&quot;Abort&quot;)),
+        &quot;A2&quot; -&gt; List(to(&quot;Abort&quot;))
+    )
+  )
+
+  // &quot;Abstract&quot; specification of two-phase commit.
+  val twoPCSimpl = LTS(
+    Set(&quot;InitP&quot;, &quot;Procc&quot;, &quot;CommitP&quot;, &quot;AbortP&quot;),
+    Map(&quot;InitP&quot; -&gt; List(to(&quot;Procc&quot;)),
+        &quot;Procc&quot; -&gt; List(to(&quot;Procc&quot;), to(&quot;CommitP&quot;), to(&quot;AbortP&quot;))
+    )
+  )
+
+  def main(args: Array[String]): Unit = {
+    val S = new Simil(twoPC, twoPCSimpl)
+    for ((p1, p2) &lt;- S.simil.toList.sorted)
+      println(s&quot;$p1 ≤ $p2&quot;)
+  }
 }
 
 /*

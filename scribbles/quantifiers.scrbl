@@ -94,7 +94,7 @@
      \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
      @label[for: "sn-demo" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
-     @span[class: "sidenote"]{The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
+     @span[class: "sidenote"]{The intuition for \( F(R) \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
      \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
      @p{
      @fact{} \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
@@ -144,7 +144,7 @@
      }
     }
     @p{Unfortunately the method above doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
-     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, \( A \) @i{cannot} simulate \( C \) because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
+     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)} because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
      one of the \( B_i \), and from then on it can only take a finite number of steps. }
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
     @img[src: "sim-n.png" style:"height:200px"]
@@ -203,7 +203,7 @@
    }
    @section{
     @p{
-     The abstract view of Lemma 4 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
+     @span[class: "newthought"]{The abstract view} of Lemma 4 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
      @blockquote{
       @p{
        Let A be a regular ordinal, [...] and B be a set with strictly smaller cardinality [...].
@@ -236,12 +236,13 @@
       @li{ @i{\( \mathcal{S}(i, Q') \) is @i{downwards-closed}
        @label[for: "sn-closed" class:"margin-toggle sidenote-number"]
        @input[type:"checkbox" id:"sn-closed" class: "margin-toggle"]
-       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{S}{L}(n, Q') \implies \mathcal{S}(m, Q') \) }
+       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{S}(n, Q') \implies \mathcal{S}(m, Q') \) }
        }. Here we need to show that if \( n \ge m \) then
       $$ P' \le_n Q' \implies P' \le_m Q' $$
       That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
-      This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone, so that
-      from \( \le_1  \ \) \( \blacksquare \)
+      This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone.
+      Indeed, note that \( \le_1 \subseteq \le_0 = Pr \times \Pr \), and applying \( F \) on both sides we get \( \le_2 = F(\le_1) \subseteq F(\le_0) = \le_1 \).
+      The proof follows by induction. \( \blacksquare \)
       }
      }
     }
