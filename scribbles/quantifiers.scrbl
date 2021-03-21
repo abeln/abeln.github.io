@@ -73,7 +73,7 @@
      @label[for: "sn-demo" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
      @span[class: "sidenote"]{The intuition for \( F \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
-     \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
+     \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
      @p{
      @fact{} \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
      @br{}
@@ -144,11 +144,11 @@
     it's enough to show that  \( \bigcap_{i \ge 0} \le_i \) is a simulation. That is, given that \( (P, Q) \in \bigcap_{i \ge 0} \le_i \) and assuming that \( P \rightarrow_\mu P' \), we
     have to show that there exists a Q' such that \( Q \rightarrow_\mu Q\ \) and \( (Q, Q') \in \bigcap_{i \ge 0} \le_i \). Because  \( (P, Q) \in \bigcap_{i \ge 0} \le_i \) we know that @i{for each \(i\)}
     we can find a \( Q'_i \) such that \( Q \rightarrow_\mu Q'_i \) and \( (P', Q'_i ) \in \le_i \). That is, we know
-    $$ \forall i, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    $$ \forall i. \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     But we need
-    $$ \exists Q', \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    $$ \exists Q'. \forall i. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     Of course, we know we can't simply swap the quantifiers, which is consistent with the counterexample we saw above.
-    In the counterexample, process \( A \) had infinitely-many outgoing transitions, so one (not very intuitive) question to ask is whether restricting the LTS to being @i{finitely branching} solves the problem.
+    In the counterexample, process \( A \) had infinitely-many outgoing transitions, so one (not very intuitive) question to ask is whether restricting the LTS to being @i{finitely branching} solves the problem (it does).
     }
     @p{
     @definition{} An LTS is finitely-branching if for every process \( P \) the set \( \{ (\mu, Q) | P \rightarrow_\mu Q \in \rightarrow \} \) is finite.
@@ -158,9 +158,9 @@
     }
     @p{
     @lemma{} If the underlying LTS is finitely-branching, then
-    $$ \forall i \ge 0, \exists Q', Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    $$ \forall i. \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     implies
-    $$ \exists Q', \forall i \ge 0, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
+    $$ \exists Q'. \forall i. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     @b{@u{Proof.}}
     Let \( M = \{ Q\ | Q \rightarrow_\mu Q' \in \rightarrow \} \). Since the LTS is finitely-branching, then \( M \) is finite.
     From the assumption, we can construct a function \( f(i) = Q_i \) that assigns to every index \( i \) and element \( Q_i \in M \).
@@ -178,6 +178,36 @@
     $$ \forall i, Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     which is allows us to instantiate the existential in our goal. \( \blacksquare \)
    }
+   }
+   @section{
+    @p{
+     The abstract view of Lemma 4 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
+     @blockquote{
+      @p{
+       Let A be a regular ordinal, [...] and B be a set with strictly smaller cardinality [...].
+       The following holds for any \( P \) that is downwards closed with respect to the
+       relation on A:
+       $$ (\forall x \in A. \exists y \in B. P(x, y) ) \implies \exists y \in B. \forall x \in A. P(x, y) $$
+     }}
+    }
+    @p{
+     Contrast with a version of Lemma 4 massaged to highlight the parallels
+     $$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{L}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{L}(i, Q') $$
+     where
+     $$ \begin{align}
+        succ(Q, \mu) &= \{ Q' | Q \rightarrow_\mu Q' \} \\
+        \mathcal{L}(i, Q') &= (P', Q') \in \le_i
+        \end{align}
+     $$
+    }
+    @p{
+       In order to use Theorem 1, we need
+       @ul{
+           @li{ \( \mathbb{N} \) must be a regular ordinal. }
+           @li{ \( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \). }
+           @li{ \( \mathcal{L}(i, Q') \) is @i{downwards-closed} on its first component with respect to the usual ordering on natural numbers. }
+     }
+    }
    }
   }
  }
