@@ -93,7 +93,7 @@
    }
    @section{
     @p{
-     @span[class: "newthought"]{Working on the complete} @i{powerset lattice} \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest @i{fixpoint} of a @i{functional}
+     @span[class: "newthought"]{Working in the complete} @i{powerset lattice} \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest @i{fixpoint} of a @i{functional}
      \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
      @label[for: "sn-demo" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]

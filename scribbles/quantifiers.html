@@ -45,7 +45,7 @@ while keeping track of which clients have committed (C) or aborted (A). The tran
 <img src="2pc-simple.png" style="height:200px" />
 <p>We then need a way to relate the two models: we can use similarity to that effect. We can see that \( Init \le Init' \), all the C and A states are simulated by Procc, \( Commit \le Commit' \), and \( Abort \le Abort' \).
 For example, the sequence \( [Init, C_1, A_2, Abort] \) is simulated by \( [Init', Procc, Procc, Abort'] \).</p></section>
-<section><p><span class="newthought">Working on the complete</span> <i>powerset lattice</i> \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest <i>fixpoint</i> of a <i>functional</i>
+<section><p><span class="newthought">Working in the complete</span> <i>powerset lattice</i> \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest <i>fixpoint</i> of a <i>functional</i>
 \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
 <label for="sn-demo" class="margin-toggle sidenote-number"></label>
 <input type="checkbox" id="sn-demo" class="margin-toggle" />
@@ -150,7 +150,7 @@ Commit ≤ Procc,
 Init ≤ Init',
 Init ≤ Procc }</span></p></section>
 <section><p><span class="newthought">Unfortunately the method above</span> doesn't always work. In the example below, \( A \) we can take \( n \) a-steps <i>for any</i> \( n \),
-so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, <i>\( A \) cannot simulate \( C \)</i>I because \( C \) can take infinitely many steps whereas \( A \) needs to &quot;commit&quot; to
+so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, <i>\( A \) cannot simulate \( C \)</i> because \( C \) can take infinitely many steps whereas \( A \) needs to &quot;commit&quot; to
 one of the \( B_i \), and from then on it can only take a finite number of steps. </p>
 <img src="sim-inf.png" style="height:200px" float="left" />
 <img src="sim-n.png" style="height:200px" />
