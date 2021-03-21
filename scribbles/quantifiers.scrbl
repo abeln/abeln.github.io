@@ -259,7 +259,7 @@ class Simil(L1: LTS, L2: LTS) {
     $$ \exists Q'. \forall i. Q \rightarrow_\mu Q' \land (P', Q') \in \le_i $$
     @b{@u{Proof.}}
     Let \( M = \{ Q\ | Q \rightarrow_\mu Q' \in \rightarrow \} \). Since the LTS is finitely branching, then \( M \) is finite.
-    From the assumption, we can construct a function \( f(i) = Q_i \) that assigns to every index \( i \) and element \( Q_i \in M \).
+    From the assumption, we can construct a function \( f(i) = Q_i \) that assigns to every index \( i \) an element \( Q_i \in M \) such that \( Q \rightarrow_\mu Q_i \land (P', Q_i) \in \le_i \).
     Now define the @i{fiber} \( f^{-1}(e) \) of an element \( e \) to be the inverse image of the singleton set containing \( e \):
     $$ f^{-1}(Q') = \{ i | f(i) = Q' \} $$
     Notice that the set of natural numbers can be partitioned as the union of the fibers of elements of \( M \):
