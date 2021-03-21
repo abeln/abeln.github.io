@@ -2,8 +2,8 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body><article><section><p><span class="newthought">This note</span> defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
-on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the trick for &quot;commuting quantifiers&quot; described in
-<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. None of what follows is novel, and is sourced from Davide Sangiorgi's excellent
+on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the &quot;trick&quot; for commuting quantifiers described in
+<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. The content sourced from Davide Sangiorgi's excellent
 <a href="https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60">introduction to coinduction and
 bisimulation</a>.</p></section>
 <section><p><span class="newthought">A labelled-transition system</span> is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
@@ -136,4 +136,7 @@ $$</p>
 <span class="sidenote">This means that \( n \ge m \land \mathcal{L}(n, Q') \implies \mathcal{L}(m, Q') \) </span></i>. Here we need to show that if \( n \ge m \) then
 $$ P' \le_n Q' \implies P' \le_m Q' $$
 That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
-This makes intuitive sense, and follows from the fact that functional \( F \) used to generate \( \le_n \) is monotone. \( \blacksquare \)</li></ul></p></section></article></body></html>
+This makes intuitive sense, and follows from the fact that functional \( F \) used to generate \( \le_n \) is monotone. \( \blacksquare \)</li></ul></p></section>
+<section><h2>References</h2>
+<ul><li>Sangiorgi, Davide. Introduction to Bisimulation and Coinduction. Cambridge University Press, 2011.</li>
+<li>Timany, Amin. Commuting Quantifiers. <a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/</a>.</li></ul></section></article></body></html>

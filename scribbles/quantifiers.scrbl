@@ -41,8 +41,8 @@
    @section{
     @p{
      @span[class: "newthought"]{This note} defines a notion of @i{similarity} for @i{labelled-transition systems} (LTS) and shows how, by placing certain finiteness conditions
-     on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the trick for "commuting quantifiers" described in
-     @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin Timany's blog}. None of what follows is novel, and is sourced from Davide Sangiorgi's excellent
+     on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the "trick" for commuting quantifiers described in
+     @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin Timany's blog}. The content sourced from Davide Sangiorgi's excellent
      @a[href: "https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60"]{introduction to coinduction and
       bisimulation}.
     }
@@ -222,6 +222,13 @@
       }
      }
     }
+   }
+   @section{
+            @h2{References}
+            @ul{
+            @li{Sangiorgi, Davide. Introduction to Bisimulation and Coinduction. Cambridge University Press, 2011.}
+            @li{Timany, Amin. Commuting Quantifiers. @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/}.}
+            }
    }
   }
  }
