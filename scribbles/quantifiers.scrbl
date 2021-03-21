@@ -42,11 +42,31 @@
    @h3{March, 2021}
    @section{
     @p{
-     @span[class: "newthought"]{This note} defines a notion of @i{similarity} for @i{labelled-transition systems} (LTS) and shows how, by placing certain finiteness conditions
-     on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the "trick" for commuting quantifiers described in
-     @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin Timany's blog}. The presentation is based on Davide Sangiorgi's excellent
-     @a[href: "https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60"]{introduction to coinduction and
-      bisimulation}.
+     @span[class: "newthought"]{How sloppy can we be with Math} and still be right? Amin Timany recently wrote an interesting @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{blog post}
+      about this. Amin is interested in situations when it's ok to @i{commute the order of quantifiers} in a proposition and still arrive at something that's valid.
+      Formally, if we know
+      $$ \forall x \in A. \exists y \in B. P(x, y) $$
+      when can we conclude
+      $$ \exists y \in B. \forall x \in A. P(x, y) $$
+      This is of course not always true: every person has a parent
+      @label[for: "ex1" class:"margin-toggle sidenote-number"]
+      @input[type:"checkbox" id:"ex1" class: "margin-toggle"]
+      @span[class: "sidenote"]{\( \forall x \in Person. \exists y \in Person. parent(x, y) \)}
+      but no one is a parent to everyone
+      @label[for: "ex2" class:"margin-toggle sidenote-number"]
+      @input[type:"checkbox" id:"ex2" class: "margin-toggle"]
+      @span[class: "sidenote"]{ \( \exists y \in Person. \forall x \in Person. parent(x, y) \)}.
+      But nor is it @i{always wrong} to commute quantifiers: everyone has an ancestor, but it is at least plausible that @a[href: "https://en.wikipedia.org/wiki/Adam_and_Eve"]{someone} is an ancestor to everyone.
+      While reading Davide Sangiorgi's excellent
+      @a[href: "https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60"]{Introduction to Bisimulation and
+      Coinduction} I was only happy to find out that the notion of @i{simulation between labelled-transition systems}
+      @label[for: "lts" class:"margin-toggle sidenote-number"]
+      @input[type:"checkbox" id:"lts" class: "margin-toggle"]
+      @span[class: "sidenote"]{ These transition systems are useful for, among many other purposes, modelling distributed systems.
+      In this context, simulations give us a way to relate a system specification to another, more abstract one. More details in Leslie Lamport's @a[href: "https://lamport.azurewebsites.net/tla/book.html"]{Specifying Systems} book. }
+      is a nice concrete example of why we would ever care
+      about commuting quantifiers. This note shows how by placing certain finiteness conditions on transition systems, we can @i{compute} simulations. The correctness of the computation
+      is given by our ability to commute quantifiers.
     }
    }
    @section{
@@ -220,7 +240,8 @@
        }. Here we need to show that if \( n \ge m \) then
       $$ P' \le_n Q' \implies P' \le_m Q' $$
       That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
-      This makes intuitive sense, and follows from the fact that functional \( F \) used to generate \( \le_n \) is monotone. \( \blacksquare \)
+      This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone, so that
+      from \( \le_1  \ \) \( \blacksquare \)
       }
      }
     }
@@ -230,7 +251,8 @@
             @ul{
             @li{Sangiorgi, Davide. Introduction to Bisimulation and Coinduction. Cambridge University Press, 2011.}
             @li{Timany, Amin. Commuting Quantifiers. @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/}.}
-            }
+            @li{Lamport, Leslie. Specifying systems. Vol. 388. Boston: Addison-Wesley, 2002. @a[href: "https://lamport.azurewebsites.net/tla/book.html"]{https://lamport.azurewebsites.net/tla/book.html}}
+    }
    }
   }
  }

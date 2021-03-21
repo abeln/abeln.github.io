@@ -3,11 +3,31 @@
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
 <body><article><h1>Simulations and Commuting Quantifiers</h1>
 <h3>March, 2021</h3>
-<section><p><span class="newthought">This note</span> defines a notion of <i>similarity</i> for <i>labelled-transition systems</i> (LTS) and shows how, by placing certain finiteness conditions
-on the LTS, similarity can be iteratively computed. In the process, we will see how similarity can be a concrete example of the &quot;trick&quot; for commuting quantifiers described in
-<a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">Amin Timany's blog</a>. The presentation is based on Davide Sangiorgi's excellent
-<a href="https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60">introduction to coinduction and
-bisimulation</a>.</p></section>
+<section><p><span class="newthought">How sloppy can we be with Math</span> and still be right? Amin Timany recently wrote an interesting <a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">blog post</a>
+ about this. Amin is interested in situations when it's ok to <i>commute the order of quantifiers</i> in a proposition and still arrive at something that's valid.
+ Formally, if we know
+ $$ \forall x \in A. \exists y \in B. P(x, y) $$
+ when can we conclude
+ $$ \exists y \in B. \forall x \in A. P(x, y) $$
+ This is of course not always true: every person has a parent
+ <label for="ex1" class="margin-toggle sidenote-number"></label>
+ <input type="checkbox" id="ex1" class="margin-toggle" />
+ <span class="sidenote">\( \forall x \in Person. \exists y \in Person. parent(x, y) \)</span>
+ but no one is a parent to everyone
+ <label for="ex2" class="margin-toggle sidenote-number"></label>
+ <input type="checkbox" id="ex2" class="margin-toggle" />
+ <span class="sidenote"> \( \exists y \in Person. \forall x \in Person. parent(x, y) \)</span>.
+ But nor is it <i>always wrong</i> to commute quantifiers: everyone has an ancestor, but it is at least plausible that <a href="https://en.wikipedia.org/wiki/Adam_and_Eve">someone</a> is an ancestor to everyone.
+ While reading Davide Sangiorgi's excellent
+ <a href="https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60">Introduction to Bisimulation and
+Coinduction</a> I was only happy to find out that the notion of <i>simulation between labelled-transition systems</i>
+ <label for="lts" class="margin-toggle sidenote-number"></label>
+ <input type="checkbox" id="lts" class="margin-toggle" />
+ <span class="sidenote"> These transition systems are useful for, among many other purposes, modelling distributed systems.
+In this context, simulations give us a way to relate a system specification to another, more abstract one. More details in Leslie Lamport's <a href="https://lamport.azurewebsites.net/tla/book.html">Specifying Systems</a> book. </span>
+ is a nice concrete example of why we would ever care
+ about commuting quantifiers. This note shows how by placing certain finiteness conditions on transition systems, we can <i>compute</i> simulations. The correctness of the computation
+ is given by our ability to commute quantifiers.</p></section>
 <section><p><span class="newthought">A labelled-transition system</span> is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
 <i>actions</i> (labels), and \( \rightarrow \subseteq Pr \times Act \times Pr \) is the <i>transition relation</i>. We will write
 \( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \).</p>
@@ -16,7 +36,7 @@ bisimulation</a>.</p></section>
 <p><i>Similarity</i>, denoted by \( \le \), is the union of all simulations.
 When \( P \le Q \) we say that \( Q \) <i>simulates</i> \( P \) (note the order is reversed).
 For example, the following LTS models a <a href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol">two-phase commit</a> (2PC) protocol with two clients,
-while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action (e.g. \( \mu \)):</p>
+while keeping track of which clients have committed (C) or aborted (A). The transitions are unlabelled because we have only one action:</p>
 <img src="2pc.png" style="height:300px" />
 <p>If we want to model the protocol at a higher level, we can decide to not keep track of the client state:</p>
 <img src="2pc-simple.png" style="height:200px" />
@@ -138,7 +158,9 @@ $$</p>
 <span class="sidenote">This means that \( n \ge m \land \mathcal{L}(n, Q') \implies \mathcal{L}(m, Q') \) </span></i>. Here we need to show that if \( n \ge m \) then
 $$ P' \le_n Q' \implies P' \le_m Q' $$
 That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
-This makes intuitive sense, and follows from the fact that functional \( F \) used to generate \( \le_n \) is monotone. \( \blacksquare \)</li></ul></p></section>
+This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone, so that
+from \( \le_1  \ \) \( \blacksquare \)</li></ul></p></section>
 <section><h2>References</h2>
 <ul><li>Sangiorgi, Davide. Introduction to Bisimulation and Coinduction. Cambridge University Press, 2011.</li>
-<li>Timany, Amin. Commuting Quantifiers. <a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/</a>.</li></ul></section></article></body></html>
+<li>Timany, Amin. Commuting Quantifiers. <a href="https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/">https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/</a>.</li>
+<li>Lamport, Leslie. Specifying systems. Vol. 388. Boston: Addison-Wesley, 2002. <a href="https://lamport.azurewebsites.net/tla/book.html">https://lamport.azurewebsites.net/tla/book.html</a></li></ul></section></article></body></html>
