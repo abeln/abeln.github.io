@@ -35,6 +35,9 @@
   @link[rel: "stylesheet" href: "../tufte.css"]
   @script[src: "https://polyfill.io/v3/polyfill.min.js?features=es6"]
   @script[id: "MathJax-script" async:"" src:"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"]
+  @link[rel:"stylesheet" href:"../highlight/styles/a11y-light.css"]
+  @script[src: "../highlight/highlight.pack.js"]
+  @script{hljs.highlightAll();}
  }
  @body{
   @article{
@@ -115,8 +118,77 @@
      If so, we could compute \( \le_0, \le_1, \ldots, \le_n, \ldots \)
      Since \( F \) is monotone, then we can stop computing as soon as we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \). In that case
      $$  \le = \bigcap_{i \ge 0} \le_i = \le_n $$
-     The fixpoint algorithm can be implemented more or less verbatim (@a[href: "simil-src.html"]{Scala source}).
-     For the 2PC models above, we indeed get that \( Init \le Init' \) as expected.
+   }
+   }
+   @section{
+   @p{
+     @span[class: "newthought"]{The fixpoint algorithm} can be implemented more or less verbatim (below in Scala, full source @a[href: "simil-src.html"]{here}):
+
+   @pre{
+    @code[class: "scala"]{
+// Compute the similarity relation on nodes of a
+// labelled-transition system (LTS) via fixpoints.
+
+object Trans {
+  // LTS processes and actions
+  type Procc = String 
+  type Act = Int
+
+  // A labelled-transition system is a set of processes (nodes)
+  // and transitions between them.
+  case class LTS(
+    procc: Set[Procc],
+    trans: Map[Procc, List[(Act, Procc)]])
+
+  // A relation is a set of pairs of processes.
+  type Rel = Set[(Procc, Procc)]
+}
+
+import Trans._
+
+class Simil(L1: LTS, L2: LTS) {
+  // The _functional_ computes the pairs (p, q) where
+  // q simulates p for one step and we end up in elements
+  // in R.
+  def funct(R : Rel): Rel = {
+    for {
+      s1 <- L1.procc
+      s2 <- L2.procc
+      if L1.trans.getOrElse(s1, List()).forall(
+        { case (a1, p1) =>
+          // s1 ->_a1 p1
+          L2.trans.getOrElse(s2, List()).exists(
+            { case (a2, p2) =>
+              // s2 ->_a2 p2
+              a2 == a1 && R.contains(p1, p2)  })
+        })
+    } yield (s1, s2)
+  }
+
+  // Compute the fixpoint of a function f from the sequence
+  // [R, f(R), f(f(R)), ...]
+  @"@"tailrec
+  private def fixpoint(R : Rel, f : Rel => Rel): Rel = {
+    val next = f(R)
+    if (next == R) R else fixpoint(next, f)
+  }
+
+  // Compute the similarity relation between processes in
+  // two LTSs (i.e. which processes in the second LTS simulate
+  // the ones in the first).
+  val simil: Rel = {
+    // Initially, consider all pairs of processes.
+    var R0: Rel = for {
+      p1 <- L1.procc
+      p2 <- L2.procc
+    } yield (p1, p2)
+    // Now iterate until we reach a fixpoint.
+    fixpoint(R0, funct)
+  }
+}
+   }}}
+   
+  @p{For the 2PC models above, we indeed get that \( Init \le Init' \) as expected.
      @label[for: "sn-sim" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-sim" class: "margin-toggle"]
      @span[class: "sidenote"]{
@@ -143,7 +215,9 @@
      Init ≤ Procc }
      }
     }
-    @p{Unfortunately the method above doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
+  }
+   @section{
+    @p{@span[class: "newthought"]{Unfortunately the method above} doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
      so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)}I because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
      one of the \( B_i \), and from then on it can only take a finite number of steps. }
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
