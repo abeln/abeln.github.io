@@ -73,7 +73,7 @@
     @p{
      @span[class: "newthought"]{A labelled-transition system} is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of @i{processes} (states), \(Act\) is a set of
      @i{actions} (labels), and \( \rightarrow \subseteq Pr \times Act \times Pr \) is the @i{transition relation}. We will write
-     \( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \).
+     \( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \in \rightarrow \).
     }
     @p{A @i{simulation} is a relation \( R \subseteq Pr \times Pr \) such that if \( (P, Q) \in R \), then for all \( P' \) such that \( P \rightarrow_{\mu} P'  \), there exists a \( Q' \) such that
      \( Q \rightarrow_{\mu} Q' \) and \( (P', Q') \in R \).
@@ -214,11 +214,11 @@
     }
     @p{
      Contrast with a version of Lemma 4 massaged to highlight the parallels
-     $$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{L}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{L}(i, Q') $$
+     $$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{S}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{S}(i, Q') $$
      where
      $$ \begin{align}
         succ(Q, \mu) &= \{ Q' | Q \rightarrow_\mu Q' \} \\
-        \mathcal{L}(i, Q') &= (P', Q') \in \le_i
+        \mathcal{S}(i, Q') &= (P', Q') \in \le_i
         \end{align}
      $$
     }
@@ -233,10 +233,10 @@
            It's easy to see that if \( n < m \) then \( f(n) < f(m) \); this means \( f \) is injective as needed. \( \blacksquare \)
       }
       @li{ @i{\( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \)}. This is easy, because since the LTS is finitely branching \( succ(Q, \mu) \) must be finite, and \( \mathbb{N} \) is infinite.  \( \blacksquare \)}
-      @li{ @i{\( \mathcal{L}(i, Q') \) is @i{downwards-closed}
+      @li{ @i{\( \mathcal{S}(i, Q') \) is @i{downwards-closed}
        @label[for: "sn-closed" class:"margin-toggle sidenote-number"]
        @input[type:"checkbox" id:"sn-closed" class: "margin-toggle"]
-       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{L}(n, Q') \implies \mathcal{L}(m, Q') \) }
+       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{S}{L}(n, Q') \implies \mathcal{S}(m, Q') \) }
        }. Here we need to show that if \( n \ge m \) then
       $$ P' \le_n Q' \implies P' \le_m Q' $$
       That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.

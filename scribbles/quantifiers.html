@@ -30,7 +30,7 @@ In this context, simulations give us a way to relate a system specification to a
  is given by our ability to commute quantifiers.</p></section>
 <section><p><span class="newthought">A labelled-transition system</span> is a triple \((Pr, Act, \rightarrow)\), where \(Pr\) is the set of <i>processes</i> (states), \(Act\) is a set of
 <i>actions</i> (labels), and \( \rightarrow \subseteq Pr \times Act \times Pr \) is the <i>transition relation</i>. We will write
-\( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \).</p>
+\( P \rightarrow_{\mu} Q \) for \( (P, \mu, Q) \in \rightarrow \).</p>
 <p>A <i>simulation</i> is a relation \( R \subseteq Pr \times Pr \) such that if \( (P, Q) \in R \), then for all \( P' \) such that \( P \rightarrow_{\mu} P'  \), there exists a \( Q' \) such that
 \( Q \rightarrow_{\mu} Q' \) and \( (P', Q') \in R \).</p>
 <p><i>Similarity</i>, denoted by \( \le \), is the union of all simulations.
@@ -137,11 +137,11 @@ The following holds for any \( P \) that is downwards closed with respect to the
 relation on A:
 $$ (\forall x \in A. \exists y \in B. P(x, y) ) \implies \exists y \in B. \forall x \in A. P(x, y) $$</p></blockquote></p>
 <p>Contrast with a version of Lemma 4 massaged to highlight the parallels
-$$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{L}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{L}(i, Q') $$
+$$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{S}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{S}(i, Q') $$
 where
 $$ \begin{align}
    succ(Q, \mu) &amp;= \{ Q' | Q \rightarrow_\mu Q' \} \\
-   \mathcal{L}(i, Q') &amp;= (P', Q') \in \le_i
+   \mathcal{S}(i, Q') &amp;= (P', Q') \in \le_i
    \end{align}
 $$</p>
 <p>In order to use Theorem 1, we need
@@ -152,10 +152,10 @@ $$</p>
  we are given \( f(n - 1) \) and have to define \( f(n) \). Since \( S \) is unbounded, there's an element \( e \in S \) such that \( e &gt; f(n - 1) \). We set \( f(n) = e \).
  It's easy to see that if \( n &lt; m \) then \( f(n) &lt; f(m) \); this means \( f \) is injective as needed. \( \blacksquare \)</li>
 <li> <i>\( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \)</i>. This is easy, because since the LTS is finitely branching \( succ(Q, \mu) \) must be finite, and \( \mathbb{N} \) is infinite.  \( \blacksquare \)</li>
-<li> <i>\( \mathcal{L}(i, Q') \) is <i>downwards-closed</i>
+<li> <i>\( \mathcal{S}(i, Q') \) is <i>downwards-closed</i>
 <label for="sn-closed" class="margin-toggle sidenote-number"></label>
 <input type="checkbox" id="sn-closed" class="margin-toggle" />
-<span class="sidenote">This means that \( n \ge m \land \mathcal{L}(n, Q') \implies \mathcal{L}(m, Q') \) </span></i>. Here we need to show that if \( n \ge m \) then
+<span class="sidenote">This means that \( n \ge m \land \mathcal{S}{L}(n, Q') \implies \mathcal{S}(m, Q') \) </span></i>. Here we need to show that if \( n \ge m \) then
 $$ P' \le_n Q' \implies P' \le_m Q' $$
 That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
 This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone, so that
