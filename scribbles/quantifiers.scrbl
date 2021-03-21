@@ -218,7 +218,7 @@ class Simil(L1: LTS, L2: LTS) {
   }
    @section{
     @p{@span[class: "newthought"]{Unfortunately the method above} doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
-     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)}I because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
+     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)} because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
      one of the \( B_i \), and from then on it can only take a finite number of steps. }
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
     @img[src: "sim-n.png" style:"height:200px"]
