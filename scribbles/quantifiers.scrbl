@@ -58,12 +58,12 @@
       @span[class: "sidenote"]{ \( \exists y \in Person. \forall x \in Person. parent(x, y) \)}.
       But nor is it @i{always wrong} to commute quantifiers: everyone has an ancestor, but it is at least plausible that @a[href: "https://en.wikipedia.org/wiki/Adam_and_Eve"]{someone} is an ancestor to everyone.
       While reading Davide Sangiorgi's excellent
-      @a[href: "https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60"]{Introduction to Bisimulation and
-      Coinduction} I was only happy to find out that the notion of @i{simulation between labelled-transition systems}
+      @a[href: "https://www.cambridge.org/core/books/introduction-to-bisimulation-and-coinduction/8B54001CB763BAE9C4BA602C0A341D60"]{@i{Introduction to Bisimulation and
+      Coinduction}} I was only happy to find out that the notion of @i{simulation between labelled-transition systems}
       @label[for: "lts" class:"margin-toggle sidenote-number"]
       @input[type:"checkbox" id:"lts" class: "margin-toggle"]
       @span[class: "sidenote"]{ These transition systems are useful for, among many other purposes, modelling distributed systems.
-      In this context, simulations give us a way to relate a system specification to another, more abstract one. More details in Leslie Lamport's @a[href: "https://lamport.azurewebsites.net/tla/book.html"]{Specifying Systems} book. }
+      In this context, simulations give us a way to relate a system specification to another, more abstract one. More details in Leslie Lamport's @a[href: "https://lamport.azurewebsites.net/tla/book.html"]{@i{Specifying Systems}} book. }
       is a nice concrete example of why we would ever care
       about commuting quantifiers. This note shows how by placing certain finiteness conditions on transition systems, we can @i{compute} simulations. The correctness of the computation
       is given by our ability to commute quantifiers.
@@ -144,7 +144,7 @@
      }
     }
     @p{Unfortunately the method above doesn't always work. In the example below, \( A \) we can take \( n \) a-steps @i{for any} \( n \),
-     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)} because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
+     so \( C \le_n A \) and \( (C, A) \in \bigcap_{ i \ge 0} \le_i \). However, @i{\( A \) cannot simulate \( C \)}I because \( C \) can take infinitely many steps whereas \( A \) needs to "commit" to
      one of the \( B_i \), and from then on it can only take a finite number of steps. }
     @img[src: "sim-inf.png" style:"height:200px" float:"left"]
     @img[src: "sim-n.png" style:"height:200px"]

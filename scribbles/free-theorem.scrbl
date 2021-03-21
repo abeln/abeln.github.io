@@ -13,7 +13,12 @@
  }
  @body{
   @article{
-    @p{The following @a[href: "https://en.wikipedia.org/wiki/Parametricity"]{free theorem} appears as an exercise in Lau Skorstengaard's
+    @section{
+      @h1{A Free Theorem}
+      @h3{August, 2020}
+    }
+    @section{
+    @p{@span[class: "newthought"]{The following @a[href: "https://en.wikipedia.org/wiki/Parametricity"]{free theorem}} appears as an exercise in Lau Skorstengaard's
       @a[href: "https://arxiv.org/pdf/1907.11133.pdf"]{@i{An Introduction to Logical Relations}}.
     }
     @p{
@@ -86,5 +91,6 @@
       Because \( k v_1 \rightarrow^* v_f \), it suffices to show \( (k v_1, k v_2) \in E[\tau_k]_\emptyset \). This follows from the fundamental theorem, because \( k \) is well-typed. \( \blacksquare \)
     }
   }
+    }
  }
 }

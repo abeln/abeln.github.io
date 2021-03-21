@@ -1,7 +1,9 @@
 <html lang="en"><head><link rel="stylesheet" href="../tufte.css" />
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head>
-<body><article><p>The following <a href="https://en.wikipedia.org/wiki/Parametricity">free theorem</a> appears as an exercise in Lau Skorstengaard's
+<body><article><section><h1>A Free Theorem</h1>
+<h3>August, 2020</h3></section>
+<section><p><span class="newthought">The following <a href="https://en.wikipedia.org/wiki/Parametricity">free theorem</a></span> appears as an exercise in Lau Skorstengaard's
 <a href="https://arxiv.org/pdf/1907.11133.pdf"><i>An Introduction to Logical Relations</i></a>.</p>
 <p><b>Theorem.</b> If \(\cdot; \cdot \vdash e : \forall \alpha. ((\tau \rightarrow \alpha) \rightarrow \alpha)\) and
 \( \cdot; \cdot \vdash k : \tau \rightarrow \tau_k \), then \( \cdot; \cdot \vdash e[\tau_k] k \approx k (e[\tau] \lambda x: \tau.x) : \tau_k \).</p>
@@ -67,4 +69,4 @@ Since \( k v_1 \) reduces to some \( v_f \) (because both \( k \) and \( v_1 \) 
 \[ (v_f, v_2) \in V[\alpha]_\sigma = R \]
 To show that \( (v_f, v_2) \in R \) we need
 \[ (v_f, k v_2) \in E[\tau_k]_\emptyset \]
-Because \( k v_1 \rightarrow^* v_f \), it suffices to show \( (k v_1, k v_2) \in E[\tau_k]_\emptyset \). This follows from the fundamental theorem, because \( k \) is well-typed. \( \blacksquare \)</p></article></body></html>
+Because \( k v_1 \rightarrow^* v_f \), it suffices to show \( (k v_1, k v_2) \in E[\tau_k]_\emptyset \). This follows from the fundamental theorem, because \( k \) is well-typed. \( \blacksquare \)</p></section></article></body></html>
