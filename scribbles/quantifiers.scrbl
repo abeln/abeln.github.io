@@ -93,8 +93,8 @@
    }
    @section{
     @p{
-     @span[class: "newthought"]{Working in the complete} @i{powerset lattice} \( \mathcal{P}(Procc \times Procc) \), we can obtain similarity as the greatest @i{fixpoint} of a @i{functional}
-     \( F : \mathcal{P}({Procc \times Procc}) \rightarrow \mathcal{P}({Procc \times Procc}) \) given by
+     @span[class: "newthought"]{Working in the complete} @i{powerset lattice} \( \mathcal{P}(Pr \times Pr) \), we can obtain similarity as the greatest @i{fixpoint} of a @i{functional}
+     \( F : \mathcal{P}({Pr \times Pr}) \rightarrow \mathcal{P}({Pr \times Pr}) \) given by
      @label[for: "sn-demo" class:"margin-toggle sidenote-number"]
      @input[type:"checkbox" id:"sn-demo" class: "margin-toggle"]
      @span[class: "sidenote"]{The intuition for \( F(R) \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
@@ -116,9 +116,30 @@
      To compute similarity, we'd like to know that \( P \le Q \) iff  \( P \le_n Q \) @i{for all n}; i.e.
      $$ \le = \bigcap_{i \ge 0} \le_i $$
      If so, we could compute \( \le_0, \le_1, \ldots, \le_n, \ldots \)
-     Since \( F \) is monotone, then we can stop computing as soon as we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \). In that case
+     Since \( F \) is monotone, then we can stop computing as soon as we reach a fixpoint \( \le_n = F(\le_{n}) = \le_{n + 1} \), In that case
      $$  \le = \bigcap_{i \ge 0} \le_i = \le_n $$
-   }
+     This is justified by the following lemma:
+    }
+    @p{
+     @lemma{} For \( i \ge 0 \), if \( P \le_{i + 1} Q \), then \( P \le_i Q \).
+    }
+    @p{
+     @b{@u{Proof.}} Intuitively, this makes sense. If \( Q \) can simulate \( P \) for \( i + 1 \) steps, then surely it can also simulate it
+     for \( i \) steps. Formally, we have to show that \( \le_{i + 1} \subseteq \le_i \).
+     Note that
+     $$ \le_1 \subseteq Pr \times \Pr = \le_0 $$
+     Since \( F \) is monotone we can (repeatedly) apply it on both sides to get
+     $$ \begin{align}
+        \le_2 = F(\le_1) \subseteq F(\le_0) = \le_1 \\
+        \le_3 = F(\le_2) \subseteq F(\le_1) = \le_2 \\
+        \ldots
+        \end{align}
+     $$
+     The proof follows by induction. \( \blacksquare \)
+    }
+    @p{
+       @corollary{} If \( n \ge m \), then \( P \le_n Q \) implies \( P \le_m Q \).
+    }
    }
    @section{
    @p{
@@ -204,7 +225,7 @@ class Simil(L1: LTS, L2: LTS) {
      C1 ≤ Init',
      C1 ≤ Procc,
      C12 ≤ Init',
-     C12 ≤ Procc,
+     C12 ≤ W,
      C2 ≤ Init',
      C2 ≤ Procc,
      Commit ≤ Abort',
@@ -277,7 +298,7 @@ class Simil(L1: LTS, L2: LTS) {
    }
    @section{
     @p{
-     @span[class: "newthought"]{The abstract view} of Lemma 4 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
+     @span[class: "newthought"]{The abstract view} of Lemma 6 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
      @blockquote{
       @p{
        Let A be a regular ordinal, [...] and B be a set with strictly smaller cardinality [...].
@@ -287,7 +308,7 @@ class Simil(L1: LTS, L2: LTS) {
      }}
     }
     @p{
-     Contrast with a version of Lemma 4 massaged to highlight the parallels
+     Contrast with a version of Lemma 6 massaged to highlight the parallels
      $$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{S}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{S}(i, Q') $$
      where
      $$ \begin{align}
@@ -313,10 +334,7 @@ class Simil(L1: LTS, L2: LTS) {
        @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{S}(n, Q') \implies \mathcal{S}(m, Q') \) }
        }. Here we need to show that if \( n \ge m \) then
       $$ P' \le_n Q' \implies P' \le_m Q' $$
-      That is, if \( Q' \) can simulate \( P' \) for \( n \) steps, then it can simulate it for \( m \) steps.
-      This makes intuitive sense, and follows from the fact that the functional \( F \) used to generate \( \le_n \) is monotone.
-      Indeed, note that \( \le_1 \subseteq \le_0 = Pr \times \Pr \), and applying \( F \) on both sides we get \( \le_2 = F(\le_1) \subseteq F(\le_0) = \le_1 \).
-      The proof follows by induction. \( \blacksquare \)
+      This is precisely the previously shown Corollary 5. \( \blacksquare \)
       }
      }
     }
