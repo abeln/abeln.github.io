@@ -121,9 +121,9 @@
                  '(("https://uwspace.uwaterloo.ca/handle/10012/15364" ".pdf")))
       }
     }
-    @; Scribbles
+    @; Memos
     @section{
-      @h2{Scribbles}
+      @h2{Memos}
       @ul{
         @(scribble "A Free Theorem" "free-theorem" "08/20")
         @(scribble "Simulations and Commuting Quantifiers" "quantifiers" "03/21")
