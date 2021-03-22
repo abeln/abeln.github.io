@@ -100,8 +100,15 @@
      @span[class: "sidenote"]{The intuition for \( F(R) \) is that it gives us all pairs  \( (P, Q) \) where \( Q \) can simulate  \( P \) @i{for one step} and after that one step @i{we end up in a pair of states in \( R \). } }     
      \[ F(R) = \{ (P, Q) | \forall P', P \rightarrow_\mu P' \implies \exists Q'. Q \rightarrow_\mu Q' \land (P', Q') \in R \} \]
      @p{
+     @fact{} \( F \) is @i{monotone}.
+     @label[for: "sn-mono" class:"margin-toggle sidenote-number"]
+     @input[type:"checkbox" id:"sn-mono" class: "margin-toggle"]
+     @span[class: "sidenote"]{This means that if \( S \subseteq R \) then \( F(S) \subseteq F(R) \). }
+     }
+     @p{
      @fact{} \( R \) is a simulation iff \( R \) is a post-fixpoint of \( F \) (i.e. \( R \subseteq F(R) \) ).
-     @br{}
+     }
+     @p{
      @corollary{} similarity is  F's greatest fixpoint (follows by @a[href: "https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem"]{Knaster-Tarski}).
      }
     }
@@ -298,7 +305,7 @@ class Simil(L1: LTS, L2: LTS) {
    }
    @section{
     @p{
-     @span[class: "newthought"]{The abstract view} of Lemma 6 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
+     @span[class: "newthought"]{The abstract view} of Lemma 7 above is given in Theorem 1 (Regular Quantification) of @a[href: "https://tildeweb.au.dk/au571806/blog/commuting_quantifiers/"]{Amin's blog post}:
      @blockquote{
       @p{
        Let A be a regular ordinal, [...] and B be a set with strictly smaller cardinality [...].
@@ -308,7 +315,7 @@ class Simil(L1: LTS, L2: LTS) {
      }}
     }
     @p{
-     Contrast with a version of Lemma 6 massaged to highlight the parallels
+     Contrast with a version of Lemma 7 massaged to highlight the parallels
      $$ ( \forall i \in \mathbb{N}. \exists Q' \in succ(Q, \mu). \mathcal{S}(i, Q') ) \implies  \exists Q' \in succ(Q, \mu). \forall i \in \mathbb{N}. \mathcal{S}(i, Q') $$
      where
      $$ \begin{align}
@@ -328,11 +335,7 @@ class Simil(L1: LTS, L2: LTS) {
            It's easy to see that if \( n < m \) then \( f(n) < f(m) \); this means \( f \) is injective as needed. \( \blacksquare \)
       }
       @li{ @i{\( succ(Q, \mu) \) must have strictly smaller cardinality than  \( \mathbb{N} \)}. This is easy, because since the LTS is finitely branching \( succ(Q, \mu) \) must be finite, and \( \mathbb{N} \) is infinite.  \( \blacksquare \)}
-      @li{ @i{\( \mathcal{S}(i, Q') \) is @i{downwards-closed}
-       @label[for: "sn-closed" class:"margin-toggle sidenote-number"]
-       @input[type:"checkbox" id:"sn-closed" class: "margin-toggle"]
-       @span[class: "sidenote"]{This means that \( n \ge m \land \mathcal{S}(n, Q') \implies \mathcal{S}(m, Q') \) }
-       }. Here we need to show that if \( n \ge m \) then
+      @li{ @i{\( \mathcal{S}(i, Q') \) is downwards-closed}. Here we need to show that if \( n \ge m \) then
       $$ P' \le_n Q' \implies P' \le_m Q' $$
       This is precisely the previously shown Corollary 5. \( \blacksquare \)
       }
