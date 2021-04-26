@@ -1,0 +1,64 @@
+<html lang="en"><head><link rel="stylesheet" href="../tufte.css" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" href="../highlight/styles/a11y-light.css" />
+<script src="../highlight/highlight.pack.js"></script>
+<script>hljs.highlightAll();</script></head>
+<body><article><h1>Why Least Fixpoints</h1>
+<h3>April, 2021</h3>
+<section><p><span class="newthought">Why does denotational semantics</span> care about <i>least</i> fixpoints, as opposed to say greatest or some other fixpoints.
+Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.</p></section>
+<section><p><span class="newthought">In denotational semantics</span> we're interested in a <i>denotation</i> function that maps program terms to mathematical functions.
+For example, we might say that the denotation of the statement <code class="C">A := A + 1</code> is the function on stores that maps location <code class="C">A</code>
+to its successor:
+$$ [[ A := A + 1 ]] = \lambda s. s[A \rightarrow s(A) + 1] $$
+To represent nontermination we use a bottom element \( \bot \), so denotations are functions \( Store_{\bot} \rightarrow Store_{\bot} \), where \( Store = Id \rightarrow Nat \)
+<label for="pointed-cpo" class="margin-toggle sidenote-number"></label>
+<input type="checkbox" id="pointed-cpo" class="margin-toggle" />
+<span class="sidenote"> \( Store_{\bot} \) then contains all the functions in \( Store \), plus \( \bot \). </span>.
+This way, an infinite loop is denoted by the function that sends <i>any</i> store to \( \bot \):
+$$ [[ while\ (true)\ do\ skip ]] = \lambda s. \bot $$</p>
+<p>Fixpoints arise naturally when looking at denotations of loops. Our operational intuition of loops motivates the desideratum
+$$ [[ while \ (B)\  do \ S ]] = [[ if\ (B)\ then\ (S;\ while\ (B)\ do\ S)\  else\ skip ]] $$
+Now let \( L = while \ (B)\  do \ S \), getting
+$$ [[ L ]] = [[ if\ (B)\ then (S; L) else \ skip ]] $$
+Computing the denotations (which I haven't explained how to do) we get
+$$ [[ L ]] = \lambda s. if\ ([[ B ]] s)\ then\ [[ L ]] ([[ S ]] s)\ else\  s $$
+The important part is that \( [[L]] \) appears in both sides of the equation.
+Here we do the usual trick where instead of the equation above we write the corresponding <i>functional</i>
+$$ F = \lambda f. \lambda s. if\ ([[ B ]] s)\ then\ f([[ S ]] s)\ else\  s $$
+Notice the denotation \( [[ L ]] \) we're looking for is such that
+$$ [[ L ]] = F([[ L ]]) $$
+a fixpoint!</p></section>
+<section><p><span class="newthought">Ok so now we know</span> that fixpoints are useful for modelling loops, but why do we care specifically about <i>least</i> fixpoints?
+The reason is that there's a <a href="https://en.wikipedia.org/wiki/Kleene_fixed-point_theorem">theorem</a> that tells us that least fixpoints can be computed in
+a way that's compatible with the operational semantics of loops. But it's also interesting to examine what goes <i>wrong</i> if we were to use e.g. <i>greatest</i> fixpoints.</p>
+<p>Consider the loop <code>while (A = 0) do skip </code> (call it \( L \). Operationally, we would say that the loop terminates iff the initial value of \( A \) is non-zero.
+Denotationally, we'd like to say that \( [[ L ]] \) is the function that sends every store where \( A \) is zero to \( \bot \), and leaves all other stores unchanged:
+$$ [[ L ]] = \lambda s.\ if\ ([[ A = 0 ]] s)\ then\ \bot\ else\ s $$
+Indeed, this is a fixpoint, because
+$$ \begin{align*}
+F([[ L ]]) &amp;= \lambda s.\ if ([[ A = 0 ]] s)\ then\ [[ L ]] ([[ skip ]] s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ [[ L ]](s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ (if ([[ A = 0 ]]\ then\  \bot \ else \ s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ \bot\ else\ s \\
+&amp;= [[ L ]]
+\end{align*}
+$$</p>
+<p>But the above is not the <i>only</i> fixpoint. Consider a denotation that makes \( L \) the identity:
+$$ [[ L ]]' = \lambda s. s $$
+This is also a fixpoint, because
+$$ \begin{align*}
+F([[ L ]]') &amp;= \lambda s.\ if ([[ A = 0 ]] s)\ then\ [[ L ]]' ([[ skip ]] s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ [[ L ]]'(s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ s\ else\ s \\
+&amp;= \lambda s. s \\
+&amp;= [[ L ]]'
+\end{align*}
+$$
+Additionally, we have \( [[ L ]] &lt; [[ L' ]] \) (although I haven't defined what <i>less than</i> means in this context) because the former sends stores
+with \( A = 0 \) to \( \bot \), whereas the latter leaves them unchanged. But this second interpretation of the loop as the identity is clearly wrong!
+Moral of the story: we really do want least fixpoints, and not just any old fixpoint.</p></section>
+<section><h2>References</h2>
+<ul><li>Schmidt, David A. Denotational semantics: a methodology for language development. William C. Brown Publishers, 1986.</li>
+<li>Winskel, Glynn. The formal semantics of programming languages: an introduction. MIT press, 1993.</li></ul></section></article></body></html>
