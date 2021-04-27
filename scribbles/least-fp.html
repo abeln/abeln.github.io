@@ -7,13 +7,16 @@
 <body><article><h1>Why Least Fixpoints</h1>
 <h3>April, 2021</h3>
 <section><p><span class="newthought">Why does denotational semantics</span> care about <i>least</i> fixpoints, as opposed to say greatest or some other fixpoints.
-Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.</p></section>
+Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.
+<label for="acks" class="margin-toggle">&amp;#8853;</label>
+<input type="checkbox" id="acks" class="margin-toggle" />
+<span class="marginnote"> Thanks to Alejandro Lopez for the helpful comments and corrections. </span></p></section>
 <section><p><span class="newthought">In denotational semantics</span> we're interested in a <i>denotation</i> function that maps program terms to mathematical functions.
 For example, we might say that the denotation of the statement <code class="C">A := A + 1</code> is the function on stores that maps location <code class="C">A</code>
 to its successor
 <label for="store-upd" class="margin-toggle sidenote-number"></label>
 <input type="checkbox" id="store-upd" class="margin-toggle" />
-<span class="sidenote"> I use the following notation for stores: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
+<span class="sidenote"> I use the following notation for store updates: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
 \( l \neq A \). </span>
 :
 $$ [[ A := A + 1 ]] = \lambda s. s[A \rightarrow s(A) + 1] $$
@@ -22,7 +25,8 @@ To represent nontermination we use a bottom element \( \bot \), so denotations a
 <input type="checkbox" id="pointed-cpo" class="margin-toggle" />
 <span class="sidenote"> \( Store_{\bot} \) then contains all the functions in \( Store \), plus \( \bot \). </span>.
 This way, an infinite loop is denoted by the function that sends <i>any</i> store to \( \bot \):
-$$ [[ while\ (true)\ do\ skip ]] = \lambda s. \bot $$</p>
+$$ [[ while\ (true)\ do\ skip ]] = \lambda s. \bot $$
+</p>
 <p>Fixpoints arise naturally when looking at denotations of loops. Our operational intuition of loops motivates the desideratum
 $$ [[ while \ (B)\  do \ S ]] = [[ if\ (B)\ then\ (S;\ while\ (B)\ do\ S)\  else\ skip ]] $$
 Now let \( L = while \ (B)\  do \ S \), getting
@@ -45,7 +49,7 @@ Indeed, this is a fixpoint, because
 $$ \begin{align*}
 F([[ L ]]) &amp;= \lambda s.\ if ([[ A = 0 ]] s)\ then\ [[ L ]] ([[ skip ]] s)\ else\ s \\
 &amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ [[ L ]](s)\ else\ s \\
-&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ (if ([[ A = 0 ]]\ then\  \bot \ else \ s)\ else\ s \\
+&amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ (if ([[ A = 0 ]] s)\ then\  \bot \ else \ s)\ else\ s \\
 &amp;= \lambda s.\ if ([[ A = 0 ]] s )\ then\ \bot\ else\ s \\
 &amp;= [[ L ]]
 \end{align*}
@@ -61,7 +65,7 @@ F([[ L ]]') &amp;= \lambda s.\ if ([[ A = 0 ]] s)\ then\ [[ L ]]' ([[ skip ]] s)
 &amp;= [[ L ]]'
 \end{align*}
 $$
-Additionally, we have \( [[ L ]] &lt; [[ L' ]] \) (although I haven't defined what <i>less than</i> means in this context) because the former sends stores
+Additionally, we have \( [[ L ]] &lt; [[ L ]]' \) (although I haven't defined what <i>less than</i> means in this context) because the former sends stores
 with \( A = 0 \) to \( \bot \), whereas the latter leaves them unchanged. But this second interpretation of the loop as the identity is clearly wrong!
 Moral of the story: we really do want least fixpoints, and not just any old fixpoint.</p></section>
 <section><h2>References</h2>

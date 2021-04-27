@@ -47,6 +47,9 @@
     @p{
      @span[class: "newthought"]{Why does denotational semantics} care about @i{least} fixpoints, as opposed to say greatest or some other fixpoints.
      Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.
+     @label[for: "acks" class: "margin-toggle"]{&#8853;}
+     @input[type:"checkbox" id:"acks" class: "margin-toggle"]
+     @span[class: "marginnote"]{ Thanks to Alejandro Lopez for the helpful comments and corrections. }
     }
    }
    @section{
@@ -66,6 +69,7 @@
       @span[class: "sidenote"]{ \( Store_{\bot} \) then contains all the functions in \( Store \), plus \( \bot \). }.
       This way, an infinite loop is denoted by the function that sends @i{any} store to \( \bot \):
       $$ [[ while\ (true)\ do\ skip ]] = \lambda s. \bot $$
+      
     }
     @p{
        Fixpoints arise naturally when looking at denotations of loops. Our operational intuition of loops motivates the desideratum
@@ -114,7 +118,7 @@
        &= [[ L ]]'
        \end{align*}
        $$
-       Additionally, we have \( [[ L ]] < [[ L' ]] \) (although I haven't defined what @i{less than} means in this context) because the former sends stores
+       Additionally, we have \( [[ L ]] < [[ L ]]' \) (although I haven't defined what @i{less than} means in this context) because the former sends stores
        with \( A = 0 \) to \( \bot \), whereas the latter leaves them unchanged. But this second interpretation of the loop as the identity is clearly wrong!
        Moral of the story: we really do want least fixpoints, and not just any old fixpoint.
     }
