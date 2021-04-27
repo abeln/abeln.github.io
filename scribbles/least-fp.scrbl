@@ -96,7 +96,7 @@
      $$ \begin{align*}
      F([[ L ]]) &= \lambda s.\ if ([[ A = 0 ]] s)\ then\ [[ L ]] ([[ skip ]] s)\ else\ s \\
      &= \lambda s.\ if ([[ A = 0 ]] s )\ then\ [[ L ]](s)\ else\ s \\
-     &= \lambda s.\ if ([[ A = 0 ]] s )\ then\ (if ([[ A = 0 ]]\ then\  \bot \ else \ s)\ else\ s \\
+     &= \lambda s.\ if ([[ A = 0 ]] s )\ then\ (if ([[ A = 0 ]] s)\ then\  \bot \ else \ s)\ else\ s \\
      &= \lambda s.\ if ([[ A = 0 ]] s )\ then\ \bot\ else\ s \\
      &= [[ L ]]
      \end{align*}
