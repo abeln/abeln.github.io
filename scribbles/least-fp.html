@@ -10,7 +10,12 @@
 Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.</p></section>
 <section><p><span class="newthought">In denotational semantics</span> we're interested in a <i>denotation</i> function that maps program terms to mathematical functions.
 For example, we might say that the denotation of the statement <code class="C">A := A + 1</code> is the function on stores that maps location <code class="C">A</code>
-to its successor:
+to its successor
+<label for="store-upd" class="margin-toggle sidenote-number"></label>
+<input type="checkbox" id="store-upd" class="margin-toggle" />
+<span class="sidenote"> I use the following notation for stores: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
+\( l \neq A \). </span>
+:
 $$ [[ A := A + 1 ]] = \lambda s. s[A \rightarrow s(A) + 1] $$
 To represent nontermination we use a bottom element \( \bot \), so denotations are functions \( Store_{\bot} \rightarrow Store_{\bot} \), where \( Store = Id \rightarrow Nat \)
 <label for="pointed-cpo" class="margin-toggle sidenote-number"></label>
@@ -33,7 +38,7 @@ a fixpoint!</p></section>
 <section><p><span class="newthought">Ok so now we know</span> that fixpoints are useful for modelling loops, but why do we care specifically about <i>least</i> fixpoints?
 The reason is that there's a <a href="https://en.wikipedia.org/wiki/Kleene_fixed-point_theorem">theorem</a> that tells us that least fixpoints can be computed in
 a way that's compatible with the operational semantics of loops. But it's also interesting to examine what goes <i>wrong</i> if we were to use e.g. <i>greatest</i> fixpoints.</p>
-<p>Consider the loop <code>while (A = 0) do skip </code> (call it \( L \). Operationally, we would say that the loop terminates iff the initial value of \( A \) is non-zero.
+<p>Consider the loop <code>while (A = 0) do skip </code> (call it \( L \)). Operationally, we would say that the loop terminates iff the initial value of \( A \) is non-zero.
 Denotationally, we'd like to say that \( [[ L ]] \) is the function that sends every store where \( A \) is zero to \( \bot \), and leaves all other stores unchanged:
 $$ [[ L ]] = \lambda s.\ if\ ([[ A = 0 ]] s)\ then\ \bot\ else\ s $$
 Indeed, this is a fixpoint, because

@@ -53,7 +53,12 @@
     @p{
       @span[class: "newthought"]{In denotational semantics} we're interested in a @i{denotation} function that maps program terms to mathematical functions.
       For example, we might say that the denotation of the statement @code[class: "C"]{A := A + 1} is the function on stores that maps location @code[class: "C"]{A}
-      to its successor:
+      to its successor
+      @label[for: "store-upd" class:"margin-toggle sidenote-number"]
+      @input[type:"checkbox" id:"store-upd" class: "margin-toggle"]
+      @span[class: "sidenote"]{ I use the following notation for stores: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
+      \( l \neq A \). }
+      :
       $$ [[ A := A + 1 ]] = \lambda s. s[A \rightarrow s(A) + 1] $$
       To represent nontermination we use a bottom element \( \bot \), so denotations are functions \( Store_{\bot} \rightarrow Store_{\bot} \), where \( Store = Id \rightarrow Nat \)
       @label[for: "pointed-cpo" class:"margin-toggle sidenote-number"]
