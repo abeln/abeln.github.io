@@ -84,7 +84,7 @@
      a way that's compatible with the operational semantics of loops. But it's also interesting to examine what goes @i{wrong} if we were to use e.g. @i{greatest} fixpoints.
     }
     @p{
-     Consider the loop @code{while (A = 0) do skip } (call it \( L \). Operationally, we would say that the loop terminates iff the initial value of \( A \) is non-zero.
+     Consider the loop @code{while (A = 0) do skip } (call it \( L \)). Operationally, we would say that the loop terminates iff the initial value of \( A \) is non-zero.
      Denotationally, we'd like to say that \( [[ L ]] \) is the function that sends every store where \( A \) is zero to \( \bot \), and leaves all other stores unchanged:
      $$ [[ L ]] = \lambda s.\ if\ ([[ A = 0 ]] s)\ then\ \bot\ else\ s $$
      Indeed, this is a fixpoint, because
