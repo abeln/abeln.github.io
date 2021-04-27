@@ -56,7 +56,7 @@
       to its successor
       @label[for: "store-upd" class:"margin-toggle sidenote-number"]
       @input[type:"checkbox" id:"store-upd" class: "margin-toggle"]
-      @span[class: "sidenote"]{ I use the following notation for stores: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
+      @span[class: "sidenote"]{ I use the following notation for store updates: \( s' = s[A \rightarrow v] \) is the store such that \( s'(A) = v \) and \( s'(l) = s(l) \) for
       \( l \neq A \). }
       :
       $$ [[ A := A + 1 ]] = \lambda s. s[A \rightarrow s(A) + 1] $$
