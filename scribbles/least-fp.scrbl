@@ -45,7 +45,7 @@
    @h3{April, 2021}
    @section{
     @p{
-     @span[class: "newthought"]{Why does denotational semantics} care about @i{least} fixpoints, as opposed to say greatest or some other fixpoints.
+     @span[class: "newthought"]{Why does denotational semantics} care about @i{least} fixpoints, as opposed to say greatest or some other fixpoints?
      Answer: because it's least fixpoints that capture our operational intuitions of code. Read on for an example.
      @label[for: "acks" class: "margin-toggle"]{&#8853;}
      @input[type:"checkbox" id:"acks" class: "margin-toggle"]
