@@ -18,46 +18,75 @@
 @(define (show-urls urls)
    (cond
      [(empty? urls) @span{}]
-     [else @span{|@elem-join[@(list-map (lambda (p) (@a[href: (first p)]{@(second p)})) urls) ", "]}]))
+     [else @span{@elem-join[@(list-map (lambda (p) (@a[href: (first p)]{@(second p)})) urls) ", "]}]))
 
+@; Find a better way to add space betweeen rows
+@(define (pad-below row)
+  @span{
+    @row
+    @tr{@td{@br{}} @td{@br{}}}
+  })
+ 
 @(define (pub title authors venue urls)
-  @li{
-    @b{@title} @(show-urls urls)
-    @br
-    @elem-join[(emph-name authors "Abel Nieto") ", "]
-    @br
-    @small[@span[style: "color:gray"]{@venue}]
-  }
+  @(pad-below
+    @tr{
+      @td{
+        @small[@span[style: "color:gray"]{@venue}]
+     }
+     @td{
+       @b{@title}
+       @br
+       @elem-join[(emph-name authors "Abel Nieto") ", "]
+       @br
+       @(show-urls urls)
+     }
+    }
+  ))
+
+@(define (trep title authors year urls)
+  @(pad-below
+   @tr{
+    @td{
+      @small[@span[style: "color:gray"]{@year}]
+    }
+    @td{
+      @b{@title}
+      @br
+      @elem-join[(emph-name authors "Abel Nieto") ", "]
+      @br
+      @(show-urls urls)
+    }
+  })
 )
 
-@(define (tr title authors year urls)
-  @li{
-    @b{@title} @(show-urls urls)
-    @br
-    @elem-join[(emph-name authors "Abel Nieto") ", "]
-    @br
-    @small[@span[style: "color:gray"]{@year}]
-  }
+@(define (thesis title year kind urls)
+   @(pad-below
+   @tr{
+    @td{
+      @small[@span[style: "color:gray"]{@year}]
+    }
+    @td{
+      @b{@title} 
+      @br
+      @small[@span[style: "color:gray"]{@kind}]
+      @br
+      @(show-urls urls)
+    }
+ })
 )
 
-@(define (thesis title kind urls)
-  @li{
-    @b{@title} @(show-urls urls)
-    @br
-    @small[@span[style: "color:gray"]{@kind}]
-  }
-)
-
-@(define (scribble title file date)
-   @li{
-       @a[href: @(string-append "scribbles/" @file ".html")]{@title} @small[@span[style: "color:gray"]{(@date)}]
-   }
- )
+@(define (memo title file date)
+     @tr{
+         @td{@small[@span[style: "color:gray"]{@date}]}
+         @td{@a[href: @(string-append "scribbles/" @file ".html")]{@title} }
+     }
+   )
 
 @doctype{html}
 
 @html[lang: "en"]{
  @head{
+  @meta[charset: "utf-8"]
   @link[rel: "stylesheet" href: "tufte.css"]
   @script[src: "https://polyfill.io/v3/polyfill.min.js?features=es6"]
   @script[id: "MathJax-script" async:"" src:"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"]
@@ -69,8 +98,7 @@
     @section{
       @p{
          Hello! My name is Abel, and I’m a PhD student at Aarhus University, where
-         I'm a member of the @a[href: "https://cs.au.dk/research/logic-and-semantics/"]{Logic and Semantics} group,
-         as well as the @a[href: "https://cs.au.dk/research/centers/cpv/"]{Center for Basic Research in Program Verification}.
+         I'm a member of the @a[href: "https://cs.au.dk/research/logic-and-semantics/"]{Logic and Semantics} group.
          My advisor is @a[href: "https://cs.au.dk/~birke/"]{Lars Birkedal}.
        }
        @p{
@@ -80,54 +108,73 @@
     }
     @; Publications
     @section{
-      @h2{Publications}
-      @h3{peer-reviewed}
-      @ol{
+      @h3{Publications}
+      @span[style: "color:gray"]{[@(show-urls '(("https://scholar.google.ca/citations?hl=en&user=Z9nsk2AAAAAJ" "Google Scholar") ("https://dblp.org/pid/205/2896.html" "DBLP")))]}
+      @h4{peer-reviewed}
+      @table{
+        @colgroup{
+          @col[span: "1" style: "width: 15%;"]
+          @col[span: "1" style: "width: 85%;"]
+        }
         @(pub "Distributed Causal Memory: Modular Specification and Verification in Higher-Order Distributed Separation Logic"
               '("Léon Gondelman" "Simon Oddershede Gregersen" "Abel Nieto" "Amin Timany" "Lars Birkedal")
-              "POPL 2021"
-              '(("papers/ccdb-final.pdf" ".pdf")))
+              "POPL '21"
+              '(("papers/ccdb-final.pdf" "pdf")))
         @(pub "Blame for Null"
               '("Abel Nieto" "Marianna Rapoport" "Gregor Richards" "Ondřej Lhoták")
-              "ECOOP 2020"
-              '(("papers/blame-final.pdf" ".pdf")
+              "ECOOP '20"
+              '(("papers/blame-final.pdf" "pdf")
                 ("https://github.com/abeln/null-calculus" "code")))
         @(pub "Scala with Explicit Nulls"
               '("Abel Nieto" "Yaoyu Zhao" "Ondřej Lhoták" "Angela Chang" "Justin Pu")
-              "ECOOP 2020"
-              '(("papers/explicit-nulls-final.pdf" ".pdf")
+              "ECOOP '20"
+              '(("papers/explicit-nulls-final.pdf" "pdf")
                 ("https://github.com/abeln/dotty/tree/dotty-explicit-nulls-evaluation" "code")))
         @(pub "Towards Algorithmic Typing for DOT (Short Paper)"
               '("Abel Nieto")
-              "Scala 2017"
-              '(("papers/algo-dot.pdf" ".pdf")
+              "SCALA '17"
+              '(("papers/algo-dot.pdf" "pdf")
                 ("https://www.youtube.com/watch?v=uokvc1Do_nM" "talk")))
         }
-      @h3{technical reports}
-      @ol{
-        @(tr "Tamarin: Concolic Disequivalence for MIPS"
+      @h4{technical reports}
+      @table{
+        @colgroup{
+          @col[span: "1" style: "width: 15%;"]
+          @col[span: "1" style: "width: 85%;"]
+        }
+        @(trep "Trillium: Unifying Refinement and Higher-Order Distributed Separation Logic"
+               '("Amin Timany" "Simon Oddershede Gregersen" "Léo Stefanesco" "Léon Gondelman" "Abel Nieto" "Lars Birkedal")
+               2021
+               '(("https://arxiv.org/abs/2109.07863" "pdf")))
+        @(trep "Tamarin: Concolic Disequivalence for MIPS"
              '("Abel Nieto")
              2018
-             '(("https://arxiv.org/pdf/1801.02571.pdf" ".pdf")))
-        @(tr "Towards Algorithmic Typing for DOT"
+             '(("https://arxiv.org/pdf/1801.02571.pdf" "pdf")))
+        @(trep "Towards Algorithmic Typing for DOT"
              '("Abel Nieto")
              2017
-             '(("https://arxiv.org/abs/1708.05437" ".pdf")))
+             '(("https://arxiv.org/abs/1708.05437" "pdf")))
       }
-      @h3{thesis}
-      @ol{
+      @h4{theses}
+      @table{
+        @colgroup{
+          @col[span: "1" style: "width: 15%;"]
+          @col[span: "1" style: "width: 85%;"]
+        }
         @(thesis "Scala with Explicit Nulls"
-                  "master thesis, University of Waterloo, 2019"
-                 '(("https://uwspace.uwaterloo.ca/handle/10012/15364" ".pdf")))
+                  "2019"
+                  "Master thesis, University of Waterloo"
+                 '(("https://uwspace.uwaterloo.ca/handle/10012/15364" "pdf")))
       }
-    }
-    @; Memos
-    @section{
-      @h2{Memos}
-      @ul{
-        @(scribble "A Free Theorem" "free-theorem" "08/20")
-        @(scribble "Simulations and Commuting Quantifiers" "quantifiers" "03/21")
-        @(scribble "Why Least Fixpoints" "least-fp" "04/21")
+      @h4{memos}
+      @table{
+        @colgroup{
+          @col[span: "1" style: "width: 15%;"]
+          @col[span: "1" style: "width: 85%;"]
+        }
+        @(memo "Why Least Fixpoints" "least-fp" "04/21")
+        @(memo "Simulations and Commuting Quantifiers" "quantifiers" "03/21")
+        @(memo "A Free Theorem" "free-theorem" "08/20")
       }
     }
   }
