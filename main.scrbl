@@ -94,6 +94,7 @@
  @body{
   @article{
     @h1{Abel Nieto}
+    @span[style: "color:gray"]{[@(show-urls '(("papers/cv.pdf" "cv") ("mailto:abeln@cs.au.dk" "email") ("https://github.com/abeln" "github") ("https://www.linkedin.com/in/abel-nieto-056768242/" "linkedin")))]}
     @; Intro section 
     @section{
       @p{
@@ -105,11 +106,15 @@
          I work on @a[href: "https://iris-project.org/"]{formal verification} of distributed systems. I'm also interested in programming language design, type theory,
          program analysis, and compilers.
        }
+       @p[style:"color:red"]{
+          I expect to complete my PhD by July 2023. I am interested in an applied scientist or formal methods engineer position in industry, in the fields of formal verification, programming language design, compilers, type systems, and static analysis.
+          I am affiliated with Aarhus University, but live in Waterloo, Canada. Do get in touch if you know of any opportunities in these areas!
+      }
     }
     @; Publications
     @section{
       @h3{Publications}
-      @span[style: "color:gray"]{[@(show-urls '(("https://scholar.google.ca/citations?hl=en&user=Z9nsk2AAAAAJ" "Google Scholar") ("https://dblp.org/pid/205/2896.html" "DBLP")))]}
+      @span[style: "color:gray"]{[@(show-urls '(("https://scholar.google.ca/citations?hl=en&user=Z9nsk2AAAAAJ" "google scholar") ("https://dblp.org/pid/205/2896.html" "dblp")))]}
       @h4{peer-reviewed}
       @table{
         @colgroup{
