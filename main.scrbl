@@ -94,7 +94,7 @@
  @body{
   @article{
     @h1{Abel Nieto}
-    @span[style: "color:gray"]{[@(show-urls '(("papers/cv.pdf" "cv") ("mailto:abeln@cs.au.dk" "email") ("https://github.com/abeln" "github") ("https://www.linkedin.com/in/abel-nieto-056768242/" "linkedin")))]}
+    @span[style: "color:gray"]{@(show-urls '(("papers/cv.pdf" "cv") ("mailto:abeln@cs.au.dk" "email") ("https://github.com/abeln" "github") ("https://www.linkedin.com/in/abel-nieto-056768242/" "linkedin")))}
     @; Intro section 
     @section{
       @p{
@@ -114,13 +114,18 @@
     @; Publications
     @section{
       @h3{Publications}
-      @span[style: "color:gray"]{[@(show-urls '(("https://scholar.google.ca/citations?hl=en&user=Z9nsk2AAAAAJ" "google scholar") ("https://dblp.org/pid/205/2896.html" "dblp")))]}
+      @span[style: "color:gray"]{@(show-urls '(("https://scholar.google.ca/citations?hl=en&user=Z9nsk2AAAAAJ" "google scholar") ("https://dblp.org/pid/205/2896.html" "dblp")))}
       @h4{peer-reviewed}
       @table{
         @colgroup{
           @col[span: "1" style: "width: 15%;"]
           @col[span: "1" style: "width: 85%;"]
         }
+        @(pub "Modular Verification of Op-Based CRDTs in Separation Logic"
+              '("Abel Nieto" "Léon Gondelman" "Alban Reynaud" "Amin Timany" "Lars Birkedal")
+              "OOPSLA '22 (conditional)"
+              '(("https://iris-project.org/pdfs/2022-crdts-submission.pdf" "preprint"))
+              )
         @(pub "Distributed Causal Memory: Modular Specification and Verification in Higher-Order Distributed Separation Logic"
               '("Léon Gondelman" "Simon Oddershede Gregersen" "Abel Nieto" "Amin Timany" "Lars Birkedal")
               "POPL '21"
@@ -141,7 +146,7 @@
               '(("papers/algo-dot.pdf" "pdf")
                 ("https://www.youtube.com/watch?v=uokvc1Do_nM" "talk")))
         }
-      @h4{technical reports}
+      @h4{preprints}
       @table{
         @colgroup{
           @col[span: "1" style: "width: 15%;"]
