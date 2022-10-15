@@ -123,8 +123,8 @@
         }
         @(pub "Modular Verification of Op-Based CRDTs in Separation Logic"
               '("Abel Nieto" "Léon Gondelman" "Alban Reynaud" "Amin Timany" "Lars Birkedal")
-              "OOPSLA '22 (conditional)"
-              '(("https://iris-project.org/pdfs/2022-crdts-submission.pdf" "preprint"))
+              "OOPSLA '22"
+              '(("https://iris-project.org/pdfs/2022-oopsla-crdts.pdf" "preprint"))
               )
         @(pub "Distributed Causal Memory: Modular Specification and Verification in Higher-Order Distributed Separation Logic"
               '("Léon Gondelman" "Simon Oddershede Gregersen" "Abel Nieto" "Amin Timany" "Lars Birkedal")
