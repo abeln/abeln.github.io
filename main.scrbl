@@ -106,10 +106,6 @@
          I work on @a[href: "https://iris-project.org/"]{formal verification} of distributed systems. I'm also interested in programming language design, type theory,
          program analysis, and compilers.
        }
-       @p[style:"color:red"]{
-          I expect to complete my PhD by July 2023. I am interested in an applied scientist or formal methods engineer position in industry, in the fields of formal verification, programming language design, compilers, type systems, and static analysis.
-          I am affiliated with Aarhus University, but live in Waterloo, Canada. Do get in touch if you know of any opportunities in these areas!
-      }
     }
     @; Publications
     @section{
@@ -121,6 +117,11 @@
           @col[span: "1" style: "width: 15%;"]
           @col[span: "1" style: "width: 85%;"]
         }
+        @(pub "Modular Verification of State-Based CRDTs in Separation Logic"
+              '("Abel Nieto" "Arnaud Daby-Seesaram" "Léon Gondelman" "Amin Timany" "Lars Birkedal")
+              "ECOOP '23"
+              '(("https://iris-project.org/pdfs/2023-ecoop-crdts.pdf" "preprint"))
+              )
         @(pub "Modular Verification of Op-Based CRDTs in Separation Logic"
               '("Abel Nieto" "Léon Gondelman" "Alban Reynaud" "Amin Timany" "Lars Birkedal")
               "OOPSLA '22"
