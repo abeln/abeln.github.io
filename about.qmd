@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "about"
 ---
 
 I'm a compiler engineer at NVIDIA, working on compilation of large language models to domain-specific architectures for inference acceleration.
