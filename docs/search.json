@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this blog"
+    "text": "I’m a compiler engineer at NVIDIA, working on compilation of large language models to domain-specific architectures for inference acceleration.\nI received my PhD in Computer Science from Aarhus University, Denmark, where I worked on modular specification and formal verification of distributed systems using separation logic and the Roc proof assistant.\nMy interests are in the areas of programming languages, compilers, and formal verification."
   },
   {
     "objectID": "posts/welcome/index.html",
