@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+
+website:
+  description: "Abel Nieto's personal website and blog."
+  site-url: https://abeln.github.io/ # you must change this appropriately for RSS feeds to work properly
+  title: "minor miracles"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/abeln
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+
+
+
