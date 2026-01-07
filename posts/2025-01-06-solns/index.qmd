@@ -1,0 +1,24 @@
+---
+title: "Solutions to Simmons' Intro to Category Theory (Chapter 1)"
+author: "Abel Nieto"
+date: "2026-01-06"
+categories: [category theory, solutions, simmons]
+---
+
+## Exercise 1.2.1
+
+a. To verify that $\textbf{Pno}$ is a category we need to check that composition of arrows is well-defined and that the identity arrow behaves as expected.
+
+   Let $(A, \alpha, a) \xrightarrow{f} (B, \beta, b)$ and $(B, \beta, b) \xrightarrow{g} (C, \gamma, c)$.
+
+   Then we have:
+    - $(g \circ f)(a) = g(f(a)) = c$
+    - The second coherence condition follows from
+      \begin{align*}
+        (g \circ f) \circ \alpha &= g \circ (f \circ \alpha) \\
+        &= g \circ (\beta \circ f) \\
+        &= (g \circ \beta) \circ f \\
+        &= (\gamma \circ g) \circ f \\
+        &= \gamma \circ (g \circ f)
+        \end{align*}
+
