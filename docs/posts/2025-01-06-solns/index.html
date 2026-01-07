@@ -197,7 +197,31 @@ window.Quarto = {
   &amp;= (\gamma \circ g) \circ f \\
   &amp;= \gamma \circ (g \circ f)
   \end{align*}\]</span></li>
-</ul></li>
+</ul>
+<p>The identify arrow on <span class="math inline">\(A\)</span> is simply the identify function on <span class="math inline">\(A\)</span>. That this behaves as the identity arrow is immediate.</p></li>
+<li><p>Here we have to show that <span class="math inline">\((\mathbb{N}, \textsf{succ}, 0)\)</span> is a <span class="math inline">\(\textbf{Pno}\)</span> object.</p>
+<p>This follows immediately from <span class="math inline">\(0 \in \mathbb{N}\)</span> and the fact that <span class="math inline">\(\textsf{succ} : \mathbb{N} \to \mathbb{N}\)</span>.</p></li>
+<li><p>This asks us to show that <span class="math inline">\((\mathbb{N}, \textsf{succ}, 0)\)</span> is initial.</p>
+<p>Let <span class="math inline">\((A, \alpha, a)\)</span> be an object.</p>
+<p>Let <span class="math inline">\(f : \mathbb{N} \to A\)</span> be recursively defined:</p>
+<ul>
+<li><span class="math inline">\(f(0) = a\)</span></li>
+<li><span class="math inline">\(f(n + 1) = \alpha(f(n))\)</span></li>
+</ul>
+<p>To see that that <span class="math inline">\(f \circ \textsf{succ} = \alpha \circ f\)</span> we proceed by case analysis:</p>
+<ul>
+<li><p>If <span class="math inline">\(n = 0\)</span>, then <span class="math display">\[\begin{align*}
+  (f \circ \textsf{succ})(0) &amp;= f(1) \\
+  &amp;= \alpha(f(0)) \\
+  &amp;= (\alpha \circ f) (0)  
+  \end{align*}\]</span></p></li>
+<li><p>otherwise, <span class="math inline">\(n = m + 1\)</span> for some <span class="math inline">\(m \in \mathbb{N}\)</span> and <span class="math display">\[\begin{align*}
+  (f \circ \textsf{succ})(m + 1) &amp;= f(m + 2) \\
+   &amp;= \alpha(f(m + 1)) \\
+   &amp;= (\alpha \circ f) (m + 1)  
+   \end{align*}\]</span></p></li>
+</ul>
+<p><span class="math inline">\(\blacksquare\)</span></p></li>
 </ol>
 
 

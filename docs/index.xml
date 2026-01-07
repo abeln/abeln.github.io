@@ -49,7 +49,23 @@
 <ul>
 <li><img src="https://latex.codecogs.com/png.latex?(g%20%5Ccirc%20f)(a)%20=%20g(f(a))%20=%20c"></li>
 <li>The second coherence condition follows from <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(g%20%5Ccirc%20f)%20%5Ccirc%20%5Calpha%20&amp;=%20g%20%5Ccirc%20(f%20%5Ccirc%20%5Calpha)%20%5C%5C%0A%20%20&amp;=%20g%20%5Ccirc%20(%5Cbeta%20%5Ccirc%20f)%20%5C%5C%0A%20%20&amp;=%20(g%20%5Ccirc%20%5Cbeta)%20%5Ccirc%20f%20%5C%5C%0A%20%20&amp;=%20(%5Cgamma%20%5Ccirc%20g)%20%5Ccirc%20f%20%5C%5C%0A%20%20&amp;=%20%5Cgamma%20%5Ccirc%20(g%20%5Ccirc%20f)%0A%20%20%5Cend%7Balign*%7D"></li>
-</ul></li>
+</ul>
+<p>The identify arrow on <img src="https://latex.codecogs.com/png.latex?A"> is simply the identify function on <img src="https://latex.codecogs.com/png.latex?A">. That this behaves as the identity arrow is immediate.</p></li>
+<li><p>Here we have to show that <img src="https://latex.codecogs.com/png.latex?(%5Cmathbb%7BN%7D,%20%5Ctextsf%7Bsucc%7D,%200)"> is a <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7BPno%7D"> object.</p>
+<p>This follows immediately from <img src="https://latex.codecogs.com/png.latex?0%20%5Cin%20%5Cmathbb%7BN%7D"> and the fact that <img src="https://latex.codecogs.com/png.latex?%5Ctextsf%7Bsucc%7D%20:%20%5Cmathbb%7BN%7D%20%5Cto%20%5Cmathbb%7BN%7D">.</p></li>
+<li><p>This asks us to show that <img src="https://latex.codecogs.com/png.latex?(%5Cmathbb%7BN%7D,%20%5Ctextsf%7Bsucc%7D,%200)"> is initial.</p>
+<p>Let <img src="https://latex.codecogs.com/png.latex?(A,%20%5Calpha,%20a)"> be an object.</p>
+<p>Let <img src="https://latex.codecogs.com/png.latex?f%20:%20%5Cmathbb%7BN%7D%20%5Cto%20A"> be recursively defined:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?f(0)%20=%20a"></li>
+<li><img src="https://latex.codecogs.com/png.latex?f(n%20+%201)%20=%20%5Calpha(f(n))"></li>
+</ul>
+<p>To see that that <img src="https://latex.codecogs.com/png.latex?f%20%5Ccirc%20%5Ctextsf%7Bsucc%7D%20=%20%5Calpha%20%5Ccirc%20f"> we proceed by case analysis:</p>
+<ul>
+<li><p>If <img src="https://latex.codecogs.com/png.latex?n%20=%200">, then <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(f%20%5Ccirc%20%5Ctextsf%7Bsucc%7D)(0)%20&amp;=%20f(1)%20%5C%5C%0A%20%20&amp;=%20%5Calpha(f(0))%20%5C%5C%0A%20%20&amp;=%20(%5Calpha%20%5Ccirc%20f)%20(0)%20%20%0A%20%20%5Cend%7Balign*%7D"></p></li>
+<li><p>otherwise, <img src="https://latex.codecogs.com/png.latex?n%20=%20m%20+%201"> for some <img src="https://latex.codecogs.com/png.latex?m%20%5Cin%20%5Cmathbb%7BN%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(f%20%5Ccirc%20%5Ctextsf%7Bsucc%7D)(m%20+%201)%20&amp;=%20f(m%20+%202)%20%5C%5C%0A%20%20%20&amp;=%20%5Calpha(f(m%20+%201))%20%5C%5C%0A%20%20%20&amp;=%20(%5Calpha%20%5Ccirc%20f)%20(m%20+%201)%20%20%0A%20%20%20%5Cend%7Balign*%7D"></p></li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cblacksquare"></p></li>
 </ol>
 
 

@@ -22,3 +22,34 @@ a. To verify that $\textbf{Pno}$ is a category we need to check that composition
         &= \gamma \circ (g \circ f)
         \end{align*}
 
+    The identify arrow on $A$ is simply the identify function on $A$. That this behaves as the identity arrow is immediate.
+
+b. Here we have to show that $(\mathbb{N}, \textsf{succ}, 0)$ is a $\textbf{Pno}$ object.
+
+    This follows immediately from $0 \in \mathbb{N}$ and the fact that $\textsf{succ} : \mathbb{N} \to \mathbb{N}$.
+
+c. This asks us to show that $(\mathbb{N}, \textsf{succ}, 0)$ is initial.
+
+    Let $(A, \alpha, a)$ be an object.
+
+    Let $f : \mathbb{N} \to A$ be recursively defined:
+    - $f(0) = a$
+    - $f(n + 1) = \alpha(f(n))$
+
+    To see that that $f \circ \textsf{succ} = \alpha \circ f$ we proceed by case analysis:
+    
+    * If $n = 0$, then
+        \begin{align*}
+        (f \circ \textsf{succ})(0) &= f(1) \\
+        &= \alpha(f(0)) \\
+        &= (\alpha \circ f) (0)  
+        \end{align*}
+
+    * otherwise, $n = m + 1$ for some $m \in \mathbb{N}$ and
+        \begin{align*}
+        (f \circ \textsf{succ})(m + 1) &= f(m + 2) \\
+         &= \alpha(f(m + 1)) \\
+         &= (\alpha \circ f) (m + 1)  
+         \end{align*}    
+
+    $\blacksquare$
