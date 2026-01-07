@@ -52,4 +52,21 @@ c. This asks us to show that $(\mathbb{N}, \textsf{succ}, 0)$ is initial.
          &= (\alpha \circ f) (m + 1)  
          \end{align*}    
 
+    This established there's an arrow from $(\mathbb{N}, \textsf{succ}, 0)$ to $(A, \alpha, a)$.
+
+    To see that it must be unique, suppose there's another function $g : \mathbb{N} \to A$ that's an arrow in $\textbf{Pno}$.
+
+    We prove by induction that $g(n) = f(n)$ for all $n \in \mathbb{N}$.
+
+    * If $n = 0$, then $g(0) = a = f(0)$.
+    * Otherwise
+        \begin{align*}
+        g(m + 1) &= g(\textsf{succ}(m)) \\
+        &= (g \circ \textsf{succ})(m) \\
+        &= (\alpha \circ g)(m) \\
+        &= \alpha(g(m)) \\
+        &= \alpha(f(m)) \\
+        &= f(m + 1)
+        \end{align*}
+
     $\blacksquare$

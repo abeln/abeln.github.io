@@ -65,6 +65,13 @@
 <li><p>If <img src="https://latex.codecogs.com/png.latex?n%20=%200">, then <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(f%20%5Ccirc%20%5Ctextsf%7Bsucc%7D)(0)%20&amp;=%20f(1)%20%5C%5C%0A%20%20&amp;=%20%5Calpha(f(0))%20%5C%5C%0A%20%20&amp;=%20(%5Calpha%20%5Ccirc%20f)%20(0)%20%20%0A%20%20%5Cend%7Balign*%7D"></p></li>
 <li><p>otherwise, <img src="https://latex.codecogs.com/png.latex?n%20=%20m%20+%201"> for some <img src="https://latex.codecogs.com/png.latex?m%20%5Cin%20%5Cmathbb%7BN%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(f%20%5Ccirc%20%5Ctextsf%7Bsucc%7D)(m%20+%201)%20&amp;=%20f(m%20+%202)%20%5C%5C%0A%20%20%20&amp;=%20%5Calpha(f(m%20+%201))%20%5C%5C%0A%20%20%20&amp;=%20(%5Calpha%20%5Ccirc%20f)%20(m%20+%201)%20%20%0A%20%20%20%5Cend%7Balign*%7D"></p></li>
 </ul>
+<p>This established there’s an arrow from <img src="https://latex.codecogs.com/png.latex?(%5Cmathbb%7BN%7D,%20%5Ctextsf%7Bsucc%7D,%200)"> to <img src="https://latex.codecogs.com/png.latex?(A,%20%5Calpha,%20a)">.</p>
+<p>To see that it must be unique, suppose there’s another function <img src="https://latex.codecogs.com/png.latex?g%20:%20%5Cmathbb%7BN%7D%20%5Cto%20A"> that’s an arrow in <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7BPno%7D">.</p>
+<p>We prove by induction that <img src="https://latex.codecogs.com/png.latex?g(n)%20=%20f(n)"> for all <img src="https://latex.codecogs.com/png.latex?n%20%5Cin%20%5Cmathbb%7BN%7D">.</p>
+<ul>
+<li>If <img src="https://latex.codecogs.com/png.latex?n%20=%200">, then <img src="https://latex.codecogs.com/png.latex?g(0)%20=%20a%20=%20f(0)">.</li>
+<li>Otherwise <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20g(m%20+%201)%20&amp;=%20g(%5Ctextsf%7Bsucc%7D(m))%20%5C%5C%0A%20%20&amp;=%20(g%20%5Ccirc%20%5Ctextsf%7Bsucc%7D)(m)%20%5C%5C%0A%20%20&amp;=%20(%5Calpha%20%5Ccirc%20g)(m)%20%5C%5C%0A%20%20&amp;=%20%5Calpha(g(m))%20%5C%5C%0A%20%20&amp;=%20%5Calpha(f(m))%20%5C%5C%0A%20%20&amp;=%20f(m%20+%201)%0A%20%20%5Cend%7Balign*%7D"></li>
+</ul>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cblacksquare"></p></li>
 </ol>
 

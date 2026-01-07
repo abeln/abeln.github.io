@@ -221,6 +221,20 @@ window.Quarto = {
    &amp;= (\alpha \circ f) (m + 1)  
    \end{align*}\]</span></p></li>
 </ul>
+<p>This established there’s an arrow from <span class="math inline">\((\mathbb{N}, \textsf{succ}, 0)\)</span> to <span class="math inline">\((A, \alpha, a)\)</span>.</p>
+<p>To see that it must be unique, suppose there’s another function <span class="math inline">\(g : \mathbb{N} \to A\)</span> that’s an arrow in <span class="math inline">\(\textbf{Pno}\)</span>.</p>
+<p>We prove by induction that <span class="math inline">\(g(n) = f(n)\)</span> for all <span class="math inline">\(n \in \mathbb{N}\)</span>.</p>
+<ul>
+<li>If <span class="math inline">\(n = 0\)</span>, then <span class="math inline">\(g(0) = a = f(0)\)</span>.</li>
+<li>Otherwise <span class="math display">\[\begin{align*}
+  g(m + 1) &amp;= g(\textsf{succ}(m)) \\
+  &amp;= (g \circ \textsf{succ})(m) \\
+  &amp;= (\alpha \circ g)(m) \\
+  &amp;= \alpha(g(m)) \\
+  &amp;= \alpha(f(m)) \\
+  &amp;= f(m + 1)
+  \end{align*}\]</span></li>
+</ul>
 <p><span class="math inline">\(\blacksquare\)</span></p></li>
 </ol>
 
