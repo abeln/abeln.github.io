@@ -14,7 +14,7 @@
 <item>
   <title>An experiment in writing things down</title>
   <dc:creator>Abel Nieto</dc:creator>
-  <link>https://abeln.github.io/posts/welcome/</link>
+  <link>https://abeln.github.io/posts/2025-01-06-welcome/</link>
   <description><![CDATA[ 
 
 
@@ -27,7 +27,39 @@
 
  ]]></description>
   <category>news</category>
-  <guid>https://abeln.github.io/posts/welcome/</guid>
+  <guid>https://abeln.github.io/posts/2025-01-06-welcome/</guid>
+  <pubDate>Tue, 06 Jan 2026 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Solutions to Simmons’ Intro to Category Theory (Chapter 1)</title>
+  <dc:creator>Abel Nieto</dc:creator>
+  <link>https://abeln.github.io/posts/2025-01-06-solns/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="exercise-1.2.1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1.2.1">Exercise 1.2.1</h2>
+<ol type="a">
+<li><p>To verify that <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7BPno%7D"> is a category we need to check that composition of arrows is well-defined and that the identity arrow behaves as expected.</p>
+<p>Let <img src="https://latex.codecogs.com/png.latex?(A,%20%5Calpha,%20a)%20%5Cxrightarrow%7Bf%7D%20(B,%20%5Cbeta,%20b)"> and <img src="https://latex.codecogs.com/png.latex?(B,%20%5Cbeta,%20b)%20%5Cxrightarrow%7Bg%7D%20(C,%20%5Cgamma,%20c)">.</p>
+<p>Then we have:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?(g%20%5Ccirc%20f)(a)%20=%20g(f(a))%20=%20c"></li>
+<li>The second coherence condition follows from <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20(g%20%5Ccirc%20f)%20%5Ccirc%20%5Calpha%20&amp;=%20g%20%5Ccirc%20(f%20%5Ccirc%20%5Calpha)%20%5C%5C%0A%20%20&amp;=%20g%20%5Ccirc%20(%5Cbeta%20%5Ccirc%20f)%20%5C%5C%0A%20%20&amp;=%20(g%20%5Ccirc%20%5Cbeta)%20%5Ccirc%20f%20%5C%5C%0A%20%20&amp;=%20(%5Cgamma%20%5Ccirc%20g)%20%5Ccirc%20f%20%5C%5C%0A%20%20&amp;=%20%5Cgamma%20%5Ccirc%20(g%20%5Ccirc%20f)%0A%20%20%5Cend%7Balign*%7D"></li>
+</ul></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>category theory</category>
+  <category>solutions</category>
+  <category>simmons</category>
+  <guid>https://abeln.github.io/posts/2025-01-06-solns/</guid>
   <pubDate>Tue, 06 Jan 2026 04:00:00 GMT</pubDate>
 </item>
 </channel>

@@ -7,8 +7,22 @@
     "text": "I’m a compiler engineer at NVIDIA, working on compilation of large language models to domain-specific architectures for inference acceleration.\nI received my PhD in Computer Science from Aarhus University, Denmark, where I worked on modular specification and formal verification of distributed systems using separation logic and the Roc proof assistant.\nMy interests are in the areas of programming languages, compilers, and formal verification."
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
+    "objectID": "posts/2025-01-06-solns/index.html",
+    "href": "posts/2025-01-06-solns/index.html",
+    "title": "Solutions to Simmons’ Intro to Category Theory (Chapter 1)",
+    "section": "",
+    "text": "To verify that \\(\\textbf{Pno}\\) is a category we need to check that composition of arrows is well-defined and that the identity arrow behaves as expected.\nLet \\((A, \\alpha, a) \\xrightarrow{f} (B, \\beta, b)\\) and \\((B, \\beta, b) \\xrightarrow{g} (C, \\gamma, c)\\).\nThen we have:\n\n\\((g \\circ f)(a) = g(f(a)) = c\\)\nThe second coherence condition follows from \\[\\begin{align*}\n  (g \\circ f) \\circ \\alpha &= g \\circ (f \\circ \\alpha) \\\\\n  &= g \\circ (\\beta \\circ f) \\\\\n  &= (g \\circ \\beta) \\circ f \\\\\n  &= (\\gamma \\circ g) \\circ f \\\\\n  &= \\gamma \\circ (g \\circ f)\n  \\end{align*}\\]"
+  },
+  {
+    "objectID": "posts/2025-01-06-solns/index.html#exercise-1.2.1",
+    "href": "posts/2025-01-06-solns/index.html#exercise-1.2.1",
+    "title": "Solutions to Simmons’ Intro to Category Theory (Chapter 1)",
+    "section": "",
+    "text": "To verify that \\(\\textbf{Pno}\\) is a category we need to check that composition of arrows is well-defined and that the identity arrow behaves as expected.\nLet \\((A, \\alpha, a) \\xrightarrow{f} (B, \\beta, b)\\) and \\((B, \\beta, b) \\xrightarrow{g} (C, \\gamma, c)\\).\nThen we have:\n\n\\((g \\circ f)(a) = g(f(a)) = c\\)\nThe second coherence condition follows from \\[\\begin{align*}\n  (g \\circ f) \\circ \\alpha &= g \\circ (f \\circ \\alpha) \\\\\n  &= g \\circ (\\beta \\circ f) \\\\\n  &= (g \\circ \\beta) \\circ f \\\\\n  &= (\\gamma \\circ g) \\circ f \\\\\n  &= \\gamma \\circ (g \\circ f)\n  \\end{align*}\\]"
+  },
+  {
+    "objectID": "posts/2025-01-06-welcome/index.html",
+    "href": "posts/2025-01-06-welcome/index.html",
     "title": "An experiment in writing things down",
     "section": "",
     "text": "I’ve long wanted to start a blog, mainly to write down things that I learn (mostly for myself but possibly others as well)."
@@ -18,6 +32,6 @@
     "href": "index.html",
     "title": "minor miracles",
     "section": "",
-    "text": "An experiment in writing things down\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 6, 2026\n\n\nAbel Nieto\n\n\n\n\n\nNo matching items"
+    "text": "An experiment in writing things down\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 6, 2026\n\n\nAbel Nieto\n\n\n\n\n\n\n\n\n\n\n\n\nSolutions to Simmons’ Intro to Category Theory (Chapter 1)\n\n\n\ncategory theory\n\nsolutions\n\nsimmons\n\n\n\n\n\n\n\n\n\nJan 6, 2026\n\n\nAbel Nieto\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -18,6 +18,8 @@ format:
       - cosmo
       - brand
     css: styles.css
+    html-math-method: mathjax
+
 
 
 
