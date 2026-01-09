@@ -1,9 +1,13 @@
 ---
-title: "Solutions to Simmons' Intro to Category Theory (Chapter 1)"
+title: "Problem solving #1"
 author: "Abel Nieto"
 date: "2026-01-06"
 categories: [category theory, solutions, simmons]
 ---
+
+# Textbook
+
+Introduction to Category Theory by Michael Simmons
 
 ## Exercise 1.2.1
 

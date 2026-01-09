@@ -31,7 +31,7 @@
   <pubDate>Tue, 06 Jan 2026 04:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Solutions to Simmons’ Intro to Category Theory (Chapter 1)</title>
+  <title>Problem solving #1</title>
   <dc:creator>Abel Nieto</dc:creator>
   <link>https://abeln.github.io/posts/2025-01-06-solns/</link>
   <description><![CDATA[ 
@@ -40,6 +40,9 @@
 
 
 
+<section id="textbook" class="level1">
+<h1>Textbook</h1>
+<p>Introduction to Category Theory by Michael Simmons</p>
 <section id="exercise-1.2.1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1.2.1">Exercise 1.2.1</h2>
 <ol type="a">
@@ -76,6 +79,7 @@
 </ol>
 
 
+</section>
 </section>
 
  ]]></description>
