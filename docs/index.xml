@@ -10,11 +10,42 @@
 <atom:link href="https://abeln.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>Abel Nieto&#39;s personal website and blog.</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Tue, 06 Jan 2026 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Jan 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Problem solving #2</title>
+  <dc:creator>Abel Nieto</dc:creator>
+  <link>https://abeln.github.io/posts/2026-01-09-solns/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="textbook" class="level1">
+<h1>Textbook</h1>
+<p>Basic Category Theory by Tom Leinster</p>
+</section>
+<section id="exercise-2.1.12" class="level1">
+<h1>Exercise 2.1.12</h1>
+<p>This problem asks what we can say about adjunctions between discrete categories. The answer is that if we have an adjunction between discrete categories, then the categories are isomorphic and the adjoint functors are isomorphisms.</p>
+<p>Let <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"> be discrete categories with <img src="https://latex.codecogs.com/png.latex?F%20:%20A%20%5Cto%20B"> and <img src="https://latex.codecogs.com/png.latex?G:%20B%20%5Cto%20A"> such that <img src="https://latex.codecogs.com/png.latex?F%20%5Cdashv%20G">.</p>
+<p>Pick any <img src="https://latex.codecogs.com/png.latex?a%20%5Cin%20%5Ctextsf%7Bobj%7D(A)"> and let <img src="https://latex.codecogs.com/png.latex?F(a)%20=%20b%20%5Cin%20%5Ctextsf%7Bobj%7D(B)">. Now consider <img src="https://latex.codecogs.com/png.latex?%5Ctextsf%7BHom%7D(F(a),%20b)%20=%20%5C%7B%5Ctextsf%7Bid%7D_b%5C%7D">. Since <img src="https://latex.codecogs.com/png.latex?F%20%5Cdashv%20G">, we must have <img src="https://latex.codecogs.com/png.latex?%5Ctextsf%7BHom%7D(F(a),%20b)%20%5Ccong%20%5Ctextsf%7BHom%7D(a,%20G(b))">. Since <img src="https://latex.codecogs.com/png.latex?A"> is discrete, we must have <img src="https://latex.codecogs.com/png.latex?G(b)%20=%20a"> (otherwise the hom-set is empty). The same holds in the other direction. This implies that <img src="https://latex.codecogs.com/png.latex?F(a)%20=%20b"> iff <img src="https://latex.codecogs.com/png.latex?G(b)%20=%20a">, so the two functors are inverses and the categories are isomorphic. <img src="https://latex.codecogs.com/png.latex?%5Cblacksquare"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>problem solving</category>
+  <category>category theory</category>
+  <category>solutions</category>
+  <category>leinster</category>
+  <guid>https://abeln.github.io/posts/2026-01-09-solns/</guid>
+  <pubDate>Fri, 09 Jan 2026 04:00:00 GMT</pubDate>
+</item>
 <item>
   <title>An experiment in writing things down</title>
   <dc:creator>Abel Nieto</dc:creator>
-  <link>https://abeln.github.io/posts/2025-01-06-welcome/</link>
+  <link>https://abeln.github.io/posts/2026-01-06-welcome/</link>
   <description><![CDATA[ 
 
 
@@ -27,13 +58,13 @@
 
  ]]></description>
   <category>news</category>
-  <guid>https://abeln.github.io/posts/2025-01-06-welcome/</guid>
+  <guid>https://abeln.github.io/posts/2026-01-06-welcome/</guid>
   <pubDate>Tue, 06 Jan 2026 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Problem solving #1</title>
   <dc:creator>Abel Nieto</dc:creator>
-  <link>https://abeln.github.io/posts/2025-01-06-solns/</link>
+  <link>https://abeln.github.io/posts/2026-01-06-solns/</link>
   <description><![CDATA[ 
 
 
@@ -43,8 +74,9 @@
 <section id="textbook" class="level1">
 <h1>Textbook</h1>
 <p>Introduction to Category Theory by Michael Simmons</p>
-<section id="exercise-1.2.1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1.2.1">Exercise 1.2.1</h2>
+</section>
+<section id="exercise-1.2.1" class="level1">
+<h1>Exercise 1.2.1</h1>
 <ol type="a">
 <li><p>To verify that <img src="https://latex.codecogs.com/png.latex?%5Ctextbf%7BPno%7D"> is a category we need to check that composition of arrows is well-defined and that the identity arrow behaves as expected.</p>
 <p>Let <img src="https://latex.codecogs.com/png.latex?(A,%20%5Calpha,%20a)%20%5Cxrightarrow%7Bf%7D%20(B,%20%5Cbeta,%20b)"> and <img src="https://latex.codecogs.com/png.latex?(B,%20%5Cbeta,%20b)%20%5Cxrightarrow%7Bg%7D%20(C,%20%5Cgamma,%20c)">.</p>
@@ -80,13 +112,13 @@
 
 
 </section>
-</section>
 
  ]]></description>
+  <category>problem solving</category>
   <category>category theory</category>
   <category>solutions</category>
   <category>simmons</category>
-  <guid>https://abeln.github.io/posts/2025-01-06-solns/</guid>
+  <guid>https://abeln.github.io/posts/2026-01-06-solns/</guid>
   <pubDate>Tue, 06 Jan 2026 04:00:00 GMT</pubDate>
 </item>
 </channel>
