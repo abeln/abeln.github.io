@@ -2,7 +2,7 @@
 title: "Problem solving #1"
 author: "Abel Nieto"
 date: "2026-01-06"
-categories: [problem solving, category theory, solutions, simmons]
+categories: [problem solving, category theory, simmons]
 ---
 
 # Textbook

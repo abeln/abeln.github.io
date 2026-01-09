@@ -2,7 +2,7 @@
 title: "Problem solving #2"
 author: "Abel Nieto"
 date: "2026-01-09"
-categories: [problem solving,category theory, solutions, leinster]
+categories: [problem solving,category theory, leinster]
 ---
 
 # Textbook
