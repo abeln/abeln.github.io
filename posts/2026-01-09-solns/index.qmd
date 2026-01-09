@@ -1,0 +1,24 @@
+---
+title: "Problem solving #2"
+author: "Abel Nieto"
+date: "2026-01-09"
+categories: [problem solving,category theory, solutions, leinster]
+---
+
+# Textbook
+
+Basic Category Theory by Tom Leinster
+
+# Exercise 2.1.12
+
+This problem asks what we can say about adjunctions between discrete categories.
+The answer is that if we have an adjunction between discrete categories, then the categories are isomorphic and the adjoint functors are isomorphisms.
+
+Let $A$ and $B$ be discrete categories with $F : A \to B$ and $G: B \to A$ such that $F \dashv G$.
+
+Pick any $a \in \textsf{obj}(A)$ and let $F(a) = b \in \textsf{obj}(B)$.
+Now consider $\textsf{Hom}(F(a), b) = \{\textsf{id}_b\}$.
+Since $F \dashv G$, we must have $\textsf{Hom}(F(a), b) \cong \textsf{Hom}(a, G(b))$.
+Since $A$ is discrete, we must have $G(b) = a$ (otherwise the hom-set is empty).
+The same holds in the other direction.
+This implies that $F(a) = b$ iff $G(b) = a$, so the two functors are inverses and the categories are isomorphic. $\blacksquare$
