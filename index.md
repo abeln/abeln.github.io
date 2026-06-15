@@ -2,7 +2,7 @@
 title: Abel Nieto
 ---
 
-[github](https://github.com/abeln) | [cv](docs/cv.pdf) |  [linkedin](https://www.linkedin.com/in/abel-nieto/)
+[email](mailto:email@example.com) | [cv](docs/cv.pdf) | [github](https://github.com/abeln) | [linkedin](https://www.linkedin.com/in/abel-nieto/)
 
 # About
 
