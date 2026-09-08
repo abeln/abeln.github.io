@@ -13,7 +13,6 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
-    "note": "./scripts/new-note",
     "preview": "./quartz/bootstrap-cli.mjs build --serve",
     "site": "./quartz/bootstrap-cli.mjs build",
     "docs": "npx quartz build --serve -d docs",

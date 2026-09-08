@@ -4,11 +4,14 @@ Abel Nieto's personal site, built with Quartz and published with GitHub Pages.
 
 ## Write a note
 
-Create a Markdown file under `content/notes/` and start writing. Frontmatter is optional. For a convenient starter:
+Create a Markdown file anywhere under `content/notes/` and start writing. Subdirectories are supported, for example:
 
-```sh
-./scripts/new-note "My note title"
+```text
+content/notes/category-theory/yoneda-lemma.md
+content/notes/compilers/ssa-construction.md
 ```
+
+Frontmatter is optional. The file path becomes the published URL.
 
 Add metadata only when it is useful:
 
