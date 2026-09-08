@@ -1,0 +1,36 @@
+#!/bin/sh
+set -eu
+
+if [ "$#" -eq 0 ]; then
+  echo 'usage: ./scripts/new-note "Note title"' >&2
+  exit 2
+fi
+
+title="$*"
+slug=$(printf '%s' "$title" \
+  | tr '[:upper:]' '[:lower:]' \
+  | sed -E 's/[^[:alnum:]]+/-/g; s/^-+//; s/-+$//')
+
+if [ -z "$slug" ]; then
+  echo "could not derive a filename from the title" >&2
+  exit 2
+fi
+
+note="content/notes/$slug.md"
+if [ -e "$note" ]; then
+  echo "note already exists: $note" >&2
+  exit 1
+fi
+
+mkdir -p content/notes
+: > "$note"
+echo "created $note"
+
+if [ -n "${VISUAL:-}" ]; then
+  "$VISUAL" "$note"
+elif [ -n "${EDITOR:-}" ]; then
+  "$EDITOR" "$note"
+elif command -v open >/dev/null 2>&1; then
+  open -t "$note"
+fi
+

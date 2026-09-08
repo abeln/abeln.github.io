@@ -1,0 +1,16 @@
+@use "./variables.scss" as *;
+
+// Keep the garden visually close to the original, deliberately sparse homepage.
+.page-title a {
+  font-weight: 650;
+}
+
+.center article > h2:first-of-type {
+  margin-top: 2rem;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.5rem;
+}
